@@ -21,3 +21,6 @@ class Transition(models.Model):
     entry = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='entry')
     exit = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='exit')
 
+    def __str__(self):
+        return self.entry.abbreviation + ' -> ' + self.move.abbreviation + ' -> ' + self.exit.abbreviation
+
