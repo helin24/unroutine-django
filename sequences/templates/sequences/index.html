@@ -1,3 +1,8 @@
+<form action="" method="post">
+{% csrf_token %}
+    <input type="number" name="steps" value="{{steps}}"/>
+    <input type="submit" value="Refresh"/>
+</form>
 {% if transitions %}
     {{startEdge.abbreviation}}
     <ul>
