@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 from .models import Edge, Transition
 
 # Create your views here.
@@ -15,4 +16,7 @@ def index(request):
         sequence.append(current)
         count += 1
 
-    return HttpResponse(sequence[0].entry.abbreviation + " -> " +  " -> ".join(x.move.abbreviation for x in sequence) + " -> " + sequence[-1].exit.abbreviation)
+    template = loader.get_template('sequences/index.html')
+    context = {'transitions': sequence, 'startEdge': sequence[0].entry}
+    return HttpResponse(template.render(context, request))
+
