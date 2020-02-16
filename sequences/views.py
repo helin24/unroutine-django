@@ -6,21 +6,26 @@ from .models import Edge, Transition
 # Create your views here.
 def index(request):
     steps = 5
+    cw = False
     if request.POST:
         steps = min(20, int(request.POST['steps']))
+        if 'clockwise' in request.POST:
+            cw = request.POST['clockwise'] == 'on'
+    excludeDirection = 'CCW' if cw else 'CW'
 
     # find all moves and select one at random
-    current = Transition.objects.order_by("?").first()
+    availableTransitions = Transition.objects.exclude(rotationDirection=excludeDirection)
+    current = availableTransitions.order_by("?").first()
     sequence = [current]
     count = 1
     while count < steps:
         # find what edge it ends on
         # find a move that starts on that one and continue
-        current = Transition.objects.filter(entry=current.exit.id).order_by("?").first()
+        current = availableTransitions.filter(entry=current.exit.id).order_by("?").first()
         sequence.append(current)
         count += 1
 
     template = loader.get_template('sequences/index.html')
-    context = {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps}
+    context = {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw}
     return HttpResponse(template.render(context, request))
 
