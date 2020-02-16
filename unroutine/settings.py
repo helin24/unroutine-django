@@ -30,7 +30,7 @@ SECRET_KEY = 'muna#qmn%cjqiymumq)htacwl-&#p#hxu7w-7r#w4it$qq$ae='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['unroutine-sequences.herokuapp.com']
+ALLOWED_HOSTS = ['unroutine-sequences.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -132,4 +132,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # import django_heroku
 # django_heroku.settings(locals())
 
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
