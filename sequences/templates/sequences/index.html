@@ -1,6 +1,8 @@
 <form action="" method="post">
 {% csrf_token %}
-    <input type="number" name="steps" value="{{steps}}"/>
+    <input type="number" name="steps" value="{{steps}}" />
+    <input type="checkbox" name="clockwise" id="clockwise" {% if clockwise %}checked{% endif %} />
+    <label for="clockwise">Clockwise?</label>
     <input type="submit" value="Refresh"/>
 </form>
 {% if transitions %}
