@@ -25,7 +25,7 @@ SECRET_KEY = 'muna#qmn%cjqiymumq)htacwl-&#p#hxu7w-7r#w4it$qq$ae='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['unroutine-sequences.herokuapp.com']
 
 
 # Application definition
