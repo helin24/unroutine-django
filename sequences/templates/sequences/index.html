@@ -1,0 +1,10 @@
+{% if transitions %}
+    {{startEdge.abbreviation}}
+    <ul>
+    {% for transition in transitions %}
+        <li>
+            {{transition.move.name}} to {{transition.exit.abbreviation}}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
