@@ -7,7 +7,7 @@ class EdgeAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation')
 
 class MoveAdmin(admin.ModelAdmin):
-    list_display = ('name', 'abbreviation')
+    list_display = ('name', 'abbreviation', 'category')
 
 class TransitionAdmin(admin.ModelAdmin):
     list_display = ('move', 'entry', 'exit')

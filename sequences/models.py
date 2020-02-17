@@ -2,9 +2,15 @@ from django.db import models
 
 # Create your models here.
 class Move(models.Model):
+    CATEGORY_CHOICES = [
+        ('J', 'Jump'),
+        ('S', 'Spin'),
+        ('M', 'Move'),
+    ]
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     abbreviation = models.CharField(max_length=10)
+    category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default='M')
 
     def __str__(self):
         return self.name
