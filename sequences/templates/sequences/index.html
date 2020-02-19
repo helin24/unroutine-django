@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sequences/style.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <form action="" method="post">
 {% csrf_token %}
     <input type="number" name="steps" value="{{steps}}" />
