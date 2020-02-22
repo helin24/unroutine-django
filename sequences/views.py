@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Edge, Transition
 
+REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
+
 # Create your views here.
 def index(request):
     steps = 5
@@ -21,7 +23,10 @@ def index(request):
     while count < steps:
         # find what edge it ends on
         # find a move that starts on that one and continue
-        current = availableTransitions.filter(entry=current.exit.id).order_by("?").first()
+        query = availableTransitions.filter(entry=current.exit.id)
+        if current.move.abbreviation not in REPEATABLE:
+            query = query.exclude(id=current.id)
+        current = query.order_by("?").first()
         sequence.append(current)
         count += 1
 
