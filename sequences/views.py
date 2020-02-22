@@ -4,6 +4,8 @@ from django.template import loader
 from .models import Edge, Transition
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
+MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
+BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
 
 # Create your views here.
 def index(request):
@@ -24,8 +26,15 @@ def index(request):
         # find what edge it ends on
         # find a move that starts on that one and continue
         query = availableTransitions.filter(entry=current.exit.id)
+
+        # Exclude the same move unless it's repeatable
         if current.move.abbreviation not in REPEATABLE:
             query = query.exclude(id=current.id)
+
+        # Exclude backspins unless preceded by particular moves
+        if current.move.abbreviation not in MOVES_BEFORE_BACKSPIN:
+            query = query.exclude(move__abbreviation__in=BACKSPINS)
+
         current = query.order_by("?").first()
         sequence.append(current)
         count += 1
