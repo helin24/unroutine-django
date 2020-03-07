@@ -4,9 +4,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <form action="" method="post">
 {% csrf_token %}
-    <input type="number" name="steps" value="{{steps}}" />
-    <input type="checkbox" name="clockwise" id="clockwise" {% if clockwise %}checked{% endif %} />
-    <label for="clockwise">Clockwise?</label>
+    <div>
+        <label for="steps">Number of steps</label>
+        <input type="number" name="steps" value="{{steps}}" />
+    </div>
+    <div>
+        <label for="clockwise">Clockwise?</label>
+        <input type="checkbox" name="clockwise" id="clockwise" {% if clockwise %}checked{% endif %} />
+    </div>
     <input type="submit" value="Refresh"/>
 </form>
 {% if transitions %}
