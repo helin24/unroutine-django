@@ -7,9 +7,9 @@ class Move(models.Model):
         ('S', 'Spin'),
         ('M', 'Move'),
     ]
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200)
-    abbreviation = models.CharField(max_length=10)
+    abbreviation = models.CharField(max_length=10, unique=True)
     category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default='M')
 
     def __str__(self):
