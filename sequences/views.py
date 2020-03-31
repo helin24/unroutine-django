@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.template import loader
+from django.core import serializers
 from .models import Edge, Transition
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
@@ -8,7 +10,7 @@ MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn
 BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
 
 # Create your views here.
-def index(request):
+def getContext(request):
     steps = 5
     cw = False
     if request.POST:
@@ -18,7 +20,7 @@ def index(request):
     excludeDirection = 'CCW' if cw else 'CW'
 
     # find all moves and select one at random
-    availableTransitions = Transition.objects.exclude(rotationDirection=excludeDirection)
+    availableTransitions = Transition.objects.select_related('move', 'entry', 'exit').exclude(rotationDirection=excludeDirection)
     current = availableTransitions.order_by("?").first()
     sequence = [current]
     count = 1
@@ -39,7 +41,15 @@ def index(request):
         sequence.append(current)
         count += 1
 
+    return {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw}
+
+def index(request):
     template = loader.get_template('sequences/index.html')
-    context = {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw}
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(getContext(request), request))
+
+def json(request):
+    context = getContext(request)
+    context['transitions'] = list(map(lambda t: t.toObject(), context['transitions']))
+    context['startEdge'] = context['startEdge'].toObject()
+    return JsonResponse(context, safe=False)
 
