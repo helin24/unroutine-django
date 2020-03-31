@@ -15,12 +15,26 @@ class Move(models.Model):
     def __str__(self):
         return self.name
 
+    def toObject(self):
+        return {
+            'name': self.name,
+            'description': self.description,
+            'abbreviation': self.abbreviation,
+            'category': self.category,
+        }
+
 class Edge(models.Model):
     name = models.CharField(max_length=50)
     abbreviation = models.CharField(max_length=10)
 
     def __str__(self):
         return self.name
+
+    def toObject(self):
+        return {
+            'name': self.name,
+            'abbreviation': self.abbreviation,
+        }
 
 class Transition(models.Model):
     DIRECTION_CHOICES = [
@@ -34,4 +48,12 @@ class Transition(models.Model):
 
     def __str__(self):
         return self.entry.abbreviation + ' -> ' + self.move.abbreviation + ' -> ' + self.exit.abbreviation
+
+    def toObject(self):
+        return {
+            'move': self.move.toObject(),
+            'entry': self.entry.toObject(),
+            'exit': self.entry.toObject(),
+            'rotationDirection': self.rotationDirection,
+        }
 
