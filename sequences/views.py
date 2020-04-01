@@ -10,13 +10,7 @@ MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn
 BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
 
 # Create your views here.
-def getContext(request):
-    steps = 5
-    cw = False
-    if request.POST:
-        steps = min(20, int(request.POST['steps']))
-        if 'clockwise' in request.POST:
-            cw = request.POST['clockwise'] == 'on'
+def getContext(request, steps, cw):
     excludeDirection = 'CCW' if cw else 'CW'
 
     # find all moves and select one at random
@@ -44,11 +38,23 @@ def getContext(request):
     return {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw}
 
 def index(request):
+    steps = 5
+    cw = False
+    if request.POST:
+        steps = min(20, int(request.POST['steps']))
+        if 'clockwise' in request.POST:
+            cw = request.POST['clockwise'] == 'on'
     template = loader.get_template('sequences/index.html')
-    return HttpResponse(template.render(getContext(request), request))
+    return HttpResponse(template.render(getContext(request, steps, cw), request))
 
 def json(request):
-    context = getContext(request)
+    steps = 5
+    cw = False
+    if request.GET:
+        steps = min(20, int(request.GET['steps']))
+        if 'clockwise' in request.GET:
+            cw = request.GET['clockwise'] == 'on'
+    context = getContext(request, steps, cw)
     context['transitions'] = list(map(lambda t: t.toObject(), context['transitions']))
     context['startEdge'] = context['startEdge'].toObject()
     return JsonResponse(context, safe=False)
