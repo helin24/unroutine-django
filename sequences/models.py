@@ -53,7 +53,7 @@ class Transition(models.Model):
         return {
             'move': self.move.toObject(),
             'entry': self.entry.toObject(),
-            'exit': self.entry.toObject(),
+            'exit': self.exit.toObject(),
             'rotationDirection': self.rotationDirection,
         }
 
