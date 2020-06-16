@@ -11,6 +11,12 @@ class Move(models.Model):
     description = models.CharField(max_length=200)
     abbreviation = models.CharField(max_length=10, unique=True)
     category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default='M')
+    # True if for clockwise skaters, the move starts on the left foot.
+    # False if it starts on the right foot.
+    # Null if the move is not directional.
+    initialLeftForC = models.BooleanField()
+    # True if the move ends on the other foot.
+    changeFoot = models.BooleanField()
 
     def __str__(self):
         return self.name
