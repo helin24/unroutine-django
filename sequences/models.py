@@ -14,9 +14,9 @@ class Move(models.Model):
     # True if for clockwise skaters, the move starts on the left foot.
     # False if it starts on the right foot.
     # Null if the move is not directional.
-    initialLeftForC = models.BooleanField()
+    initialLeftForC = models.BooleanField(null=True)
     # True if the move ends on the other foot.
-    changeFoot = models.BooleanField()
+    changeFoot = models.BooleanField(null=True)
 
     def __str__(self):
         return self.name
