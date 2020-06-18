@@ -4,12 +4,12 @@ from django.http import JsonResponse
 from django.template import loader
 from django.core import serializers
 from .models import Edge, Transition
+from .generator import Generator
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
 BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
 
-# Create your views here.
 def getContext(request, steps, cw):
     excludeDirection = 'CCW' if cw else 'CW'
 
@@ -54,7 +54,7 @@ def json(request):
         steps = min(20, int(request.GET['steps']))
         if 'clockwise' in request.GET:
             cw = request.GET['clockwise'] == 'on'
-    context = getContext(request, steps, cw)
+    context = Generator().makeRandom(request, steps, cw)
     context['transitions'] = list(map(lambda t: t.toObject(), context['transitions']))
     context['startEdge'] = context['startEdge'].toObject()
     return JsonResponse(context, safe=False)
