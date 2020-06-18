@@ -27,6 +27,8 @@ class Move(models.Model):
             'description': self.description,
             'abbreviation': self.abbreviation,
             'category': self.category,
+            'initialLeftForC': self.initialLeftForC,
+            'changeFoot': self.changeFoot,
         }
 
 class Edge(models.Model):
