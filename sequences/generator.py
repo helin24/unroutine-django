@@ -17,7 +17,7 @@ class Generator:
     
         clockwiseIfInitialLeft = None
         if current.move.initialLeftForC is not None:
-            clockwiseIfInitialLeft = current.move.initialLeftforC
+            clockwiseIfInitialLeft = current.move.initialLeftForC
     
         onInitialFoot = not current.move.changeFoot
     
@@ -51,15 +51,12 @@ class Generator:
                     query.exclude(move__initialLeftForC=not clockwiseIfInitialLeft)
     
             current = query.order_by("?").first()
-            if current.move.initialLeftForC is not None:
+            if clockwiseIfInitialLeft is None and current.move.initialLeftForC is not None:
                 clockwiseIfInitialLeft = current.move.initialLeftForC
             onInitialFoot = onInitialFoot is not current.move.changeFoot
 
             sequence.append(current)
             count += 1
-
-        # if desire clockwise and clockwiseifinitialleft is true, Left. Otherwise right
-        # if desire ccw and ciil is true, right otherwise left
 
         # Choose starting foot
         if clockwiseIfInitialLeft is None:
