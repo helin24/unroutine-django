@@ -46,11 +46,14 @@ class Generator:
             # Exclude directional moves that don't align with left and initial
             initialLeftForCToExclude = self.initialLeftForCToExclude(onInitialFoot, clockwiseIfInitialLeft)
             if initialLeftForCToExclude is not None:
-                query.exclude(move__initialLeftForC=initialLeftForCToExclude)
+                query = query.exclude(move__initialLeftForC=initialLeftForCToExclude)
     
             current = query.order_by("?").first()
+
+            # if we've already switched feet, then current move initialLeftForC should be reversed
+
             if clockwiseIfInitialLeft is None and current.move.initialLeftForC is not None:
-                clockwiseIfInitialLeft = current.move.initialLeftForC
+                clockwiseIfInitialLeft = onInitialFoot == current.move.initialLeftForC
             onInitialFoot = onInitialFoot is not current.move.changeFoot
 
             sequence.append(current)
