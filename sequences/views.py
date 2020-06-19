@@ -24,10 +24,11 @@ def index(request):
     transitionsWithFoot = []
     for transition in result['transitions']:
         if transition.move.changeFoot == currentFootIsLeft:
-            foot = 'R'
+            currentFootIsLeft = False
         else:
-            foot = 'L'
-        transitionsWithFoot.append({'transition': transition, 'foot': foot})
+            currentFootIsLeft = True
+
+        transitionsWithFoot.append({'transition': transition, 'foot': 'L' if currentFootIsLeft else 'R'})
 
     result['transitions'] = transitionsWithFoot
 
