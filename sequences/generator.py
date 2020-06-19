@@ -50,10 +50,7 @@ class Generator:
     
             current = query.order_by("?").first()
 
-            # if we've already switched feet, then current move initialLeftForC should be reversed
-
-            if clockwiseIfInitialLeft is None and current.move.initialLeftForC is not None:
-                clockwiseIfInitialLeft = onInitialFoot == current.move.initialLeftForC
+            clockwiseIfInitialLeft = self.nextClockwiseIfInitialLeft(onInitialFoot, clockwiseIfInitialLeft, current)
             onInitialFoot = onInitialFoot is not current.move.changeFoot
 
             sequence.append(current)
@@ -68,6 +65,12 @@ class Generator:
             startFoot = 'R'
 
         return {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+
+    def nextClockwiseIfInitialLeft(self, onInitialFoot, clockwiseIfInitialLeft, transition):
+        # if we've already switched feet, then current move initialLeftForC should be reversed
+        if clockwiseIfInitialLeft is None and transition.move.initialLeftForC is not None:
+            return onInitialFoot == transition.move.initialLeftForC
+        return clockwiseIfInitialLeft
 
     def initialLeftForCToExclude(self, onInitialFoot, clockwiseIfInitialLeft):
         # If there is no directionality yet, return None
