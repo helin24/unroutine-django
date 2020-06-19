@@ -44,11 +44,9 @@ class Generator:
                 query = query.exclude(move__abbreviation__in=BACKSPINS)
 
             # Exclude directional moves that don't align with left and initial
-            if clockwiseIfInitialLeft is not None:
-                if onInitialFoot:
-                    query.exclude(move__initialLeftForC=not clockwiseIfInitialLeft)
-                else:
-                    query.exclude(move__initialLeftForC=clockwiseIfInitialLeft)
+            initialLeftForCToExclude = self.initialLeftForCToExclude(onInitialFoot, clockwiseIfInitialLeft)
+            if initialLeftForCToExclude is not None:
+                query.exclude(move__initialLeftForC=initialLeftForCToExclude)
     
             current = query.order_by("?").first()
             if clockwiseIfInitialLeft is None and current.move.initialLeftForC is not None:
@@ -67,4 +65,16 @@ class Generator:
             startFoot = 'R'
 
         return {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+
+    def initialLeftForCToExclude(self, onInitialFoot, clockwiseIfInitialLeft):
+        # If there is no directionality yet, return None
+        if clockwiseIfInitialLeft is None:
+            return None
+
+        # If directionality has been established, then we want to check:
+        # 1. Are we on the initial foot? If so, exclude moves that do not match the established direction
+        if onInitialFoot:
+            return not clockwiseIfInitialLeft
+        else:
+            return clockwiseIfInitialLeft
 
