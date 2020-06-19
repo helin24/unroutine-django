@@ -45,7 +45,21 @@ def index(request):
         if 'clockwise' in request.POST:
             cw = request.POST['clockwise'] == 'on'
     template = loader.get_template('sequences/index.html')
-    return HttpResponse(template.render(getContext(request, steps, cw), request))
+    result = Generator().makeRandom(request, steps, cw)
+
+    currentFootIsLeft = result['startFoot'] == 'L'
+    transitionsWithFoot = []
+    for transition in result['transitions']:
+        if transition.move.changeFoot == currentFootIsLeft:
+            foot = 'R'
+        else:
+            foot = 'L'
+        transitionsWithFoot.append({'transition': transition, 'foot': foot})
+
+    result['transitions'] = transitionsWithFoot
+
+    print(result)
+    return HttpResponse(template.render(result, request))
 
 def json(request):
     steps = 5
