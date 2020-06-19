@@ -56,3 +56,12 @@ class GeneratorTestCase(TestCase):
         tl = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=True, transition=self.salTransition)
         self.assertEquals(tl, True)
 
+    def testInitialLeftForCToExclude(self):
+        self.assertEquals(Generator().initialLeftForCToExclude(True, None), None)
+        self.assertEquals(Generator().initialLeftForCToExclude(True, True), False)
+        self.assertEquals(Generator().initialLeftForCToExclude(True, False), True)
+
+        self.assertEquals(Generator().initialLeftForCToExclude(False, None), None)
+        self.assertEquals(Generator().initialLeftForCToExclude(False, True), True)
+        self.assertEquals(Generator().initialLeftForCToExclude(False, False), False)
+
