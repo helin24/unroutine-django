@@ -46,9 +46,9 @@ class Generator:
             # Exclude directional moves that don't align with left and initial
             if clockwiseIfInitialLeft is not None:
                 if onInitialFoot:
-                    query.exclude(move__initialLeftForC=clockwiseIfInitialLeft)
-                else:
                     query.exclude(move__initialLeftForC=not clockwiseIfInitialLeft)
+                else:
+                    query.exclude(move__initialLeftForC=clockwiseIfInitialLeft)
     
             current = query.order_by("?").first()
             if clockwiseIfInitialLeft is None and current.move.initialLeftForC is not None:
