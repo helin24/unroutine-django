@@ -15,11 +15,11 @@
     <input type="submit" value="Refresh"/>
 </form>
 {% if transitions %}
-    {{startFoot}}{{startEdge.abbreviation}}
+    {{startEdge.foot}}{{startEdge.abbreviation}}
     <ul>
-    {% for element in transitions %}
+    {% for transition in transitions %}
         <li>
-          {{element.transition.move.name}} to {{element.foot}}{{element.transition.exit.abbreviation}}
+          {{transition.move.name}} to {{transition.exit.foot}}{{transition.exit.abbreviation}}
         </li>
     {% endfor %}
     </ul>
