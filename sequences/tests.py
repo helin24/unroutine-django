@@ -74,3 +74,23 @@ class GeneratorTestCase(TestCase):
         self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=False), 'R')
         self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=False), 'L')
 
+    def testTransitionsWithFoot(self):
+        transitions = [self.transition, self.salTransition, self.tlTransition]
+
+        result = Generator().transitionsWithFoot(transitions, 'R')
+
+        self.assertEquals(result[0].entry.abbreviation, 'FO')
+        self.assertEquals(result[0].entry.foot, 'R')
+        self.assertEquals(result[0].exit.abbreviation, 'BI')
+        self.assertEquals(result[0].exit.foot, 'R')
+
+        self.assertEquals(result[1].entry.abbreviation, 'BI')
+        self.assertEquals(result[1].entry.foot, 'R')
+        self.assertEquals(result[1].exit.abbreviation, 'BO')
+        self.assertEquals(result[1].exit.foot, 'L')
+
+        self.assertEquals(result[2].entry.abbreviation, 'BO')
+        self.assertEquals(result[2].entry.foot, 'L')
+        self.assertEquals(result[2].exit.abbreviation, 'BO')
+        self.assertEquals(result[2].exit.foot, 'L')
+
