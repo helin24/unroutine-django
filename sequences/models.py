@@ -44,6 +44,17 @@ class Edge(models.Model):
             'abbreviation': self.abbreviation,
         }
 
+class EdgeWithFoot(Edge):
+    def __init__(self, edge, foot):
+        self.name = edge.name
+        self.abbreviation = edge.abbreviation
+        self.foot = foot
+
+    def toObject(self):
+        edge = super().toObject()
+        edge['foot'] = self.foot
+        return edge
+
 class Transition(models.Model):
     DIRECTION_CHOICES = [
         ('CW', 'Clockwise'),

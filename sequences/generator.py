@@ -1,4 +1,4 @@
-from .models import Edge, Transition
+from .models import Edge, Transition, EdgeWithFoot
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -56,15 +56,33 @@ class Generator:
             sequence.append(current)
             count += 1
 
-        # Choose starting foot
-        if clockwiseIfInitialLeft is None:
-            startFoot = 'L'
-        elif clockwiseIfInitialLeft == cw:
-            startFoot = 'L'
-        else:
-            startFoot = 'R'
+        startFoot = self.chooseStartingFoot(clockwiseIfInitialLeft, cw)
 
-        return {'transitions': sequence, 'startEdge': sequence[0].entry, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+        """
+        currentFootIsLeft = result['startFoot'] == 'L'
+        transitionsWithFoot = []
+        for transition in result['transitions']:
+            if transition.move.changeFoot == currentFootIsLeft:
+                currentFootIsLeft = False
+            else:
+                currentFootIsLeft = True
+    
+            transitionsWithFoot.append({'transition': transition, 'foot': 'L' if currentFootIsLeft else 'R'})
+    
+        result['transitions'] = transitionsWithFoot
+        """
+
+        startEdge = EdgeWithFoot(sequence[0].entry, startFoot)
+
+        return {'transitions': sequence, 'startEdge': startEdge, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+
+    def chooseStartingFoot(self, clockwiseIfInitialLeft, cw):
+        if clockwiseIfInitialLeft is None:
+            return 'L'
+        elif clockwiseIfInitialLeft == cw:
+            return 'L'
+        else:
+            return 'R'
 
     def nextClockwiseIfInitialLeft(self, onInitialFoot, clockwiseIfInitialLeft, transition):
         # if we've already switched feet, then current move initialLeftForC should be reversed
