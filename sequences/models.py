@@ -83,6 +83,7 @@ class Transition(models.Model):
 class TransitionWithFoot():
     def __init__(self, transition, entryFoot, exitFoot):
         self.transition = transition
+        self.move = transition.move
         self.entry = EdgeWithFoot(transition.entry, entryFoot)
         self.exit = EdgeWithFoot(transition.exit, exitFoot)
 

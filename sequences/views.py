@@ -20,18 +20,6 @@ def index(request):
     template = loader.get_template('sequences/index.html')
     result = Generator().makeRandom(request, steps, cw)
 
-    currentFootIsLeft = result['startFoot'] == 'L'
-    transitionsWithFoot = []
-    for transition in result['transitions']:
-        if transition.move.changeFoot == currentFootIsLeft:
-            currentFootIsLeft = False
-        else:
-            currentFootIsLeft = True
-
-        transitionsWithFoot.append({'transition': transition, 'foot': 'L' if currentFootIsLeft else 'R'})
-
-    result['transitions'] = transitionsWithFoot
-
     return HttpResponse(template.render(result, request))
 
 def json(request):
