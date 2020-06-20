@@ -65,3 +65,12 @@ class GeneratorTestCase(TestCase):
         self.assertEquals(Generator().initialLeftForCToExclude(False, True), True)
         self.assertEquals(Generator().initialLeftForCToExclude(False, False), False)
 
+    def testChooseStartingFoot(self):
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=True), 'L')
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=True), 'L')
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=True), 'R')
+
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=False), 'L')
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=False), 'R')
+        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=False), 'L')
+

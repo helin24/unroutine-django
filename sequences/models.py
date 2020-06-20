@@ -44,14 +44,15 @@ class Edge(models.Model):
             'abbreviation': self.abbreviation,
         }
 
-class EdgeWithFoot(Edge):
+class EdgeWithFoot():
     def __init__(self, edge, foot):
+        self.edge = edge
         self.name = edge.name
         self.abbreviation = edge.abbreviation
         self.foot = foot
 
     def toObject(self):
-        edge = super().toObject()
+        edge = self.edge.toObject()
         edge['foot'] = self.foot
         return edge
 
