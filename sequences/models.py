@@ -51,6 +51,9 @@ class EdgeWithFoot():
         self.abbreviation = edge.abbreviation
         self.foot = foot
 
+    def __str__(self):
+        return '%s%s' % (self.foot, self.abbreviation)
+
     def toObject(self):
         edge = self.edge.toObject()
         edge['foot'] = self.foot
@@ -77,3 +80,14 @@ class Transition(models.Model):
             'rotationDirection': self.rotationDirection,
         }
 
+class TransitionWithFoot():
+    def __init__(self, transition, entryFoot, exitFoot):
+        self.transition = transition
+        self.entry = EdgeWithFoot(transition.entry, entryFoot)
+        self.exit = EdgeWithFoot(transition.exit, exitFoot)
+
+    def toObject(self):
+        transition = self.transition.toObject()
+        transition['entry'] = self.entry.toObject()
+        transition['exit'] = self.exit.toObject()
+        return transition

@@ -1,4 +1,4 @@
-from .models import Edge, Transition, EdgeWithFoot
+from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -58,23 +58,29 @@ class Generator:
 
         startFoot = self.chooseStartingFoot(clockwiseIfInitialLeft, cw)
 
-        """
-        currentFootIsLeft = result['startFoot'] == 'L'
+        transitions = self.transitionsWithFoot(sequence, startFoot)
+
+        startEdge = transitions[0].entry
+
+        return {'transitions': transitions, 'startEdge': startEdge, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+
+    def transitionsWithFoot(self, transitions, startFoot):
+        currentFootIsLeft = startFoot == 'L'
+
         transitionsWithFoot = []
-        for transition in result['transitions']:
+        for transition in transitions:
+            entryFoot = 'L' if currentFootIsLeft else 'R'
+
             if transition.move.changeFoot == currentFootIsLeft:
                 currentFootIsLeft = False
             else:
                 currentFootIsLeft = True
-    
-            transitionsWithFoot.append({'transition': transition, 'foot': 'L' if currentFootIsLeft else 'R'})
-    
-        result['transitions'] = transitionsWithFoot
-        """
 
-        startEdge = EdgeWithFoot(sequence[0].entry, startFoot)
+            exitFoot = 'L' if currentFootIsLeft else 'R'
 
-        return {'transitions': sequence, 'startEdge': startEdge, 'steps': steps, 'clockwise': cw, 'startFoot': startFoot}
+            transitionsWithFoot.append(TransitionWithFoot(transition, entryFoot, exitFoot))
+
+        return transitionsWithFoot
 
     def chooseStartingFoot(self, clockwiseIfInitialLeft, cw):
         if clockwiseIfInitialLeft is None:
