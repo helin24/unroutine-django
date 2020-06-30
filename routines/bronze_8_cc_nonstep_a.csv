@@ -1,0 +1,44 @@
+Entry,Move,Exit
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Flip,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Cross Step,RFI
+RFI,Step,LFI
+LFI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Step,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Waltz Jump,RBO
+RBO,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Forward Upright Spin,RBO
+RBO,Back Upright Spin,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Salchow,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFI

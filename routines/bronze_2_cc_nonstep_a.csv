@@ -1,0 +1,42 @@
+Entry,Move,Exit
+LBO,Cross Roll,RBO
+RBO,Cross Roll,LBO
+LBO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Side Toe Hop,RFO
+RFO,Step,LFI
+LFI,Bracket,LBO
+LBO,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Flip,RBO
+RBO,Toe Loop,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Three Turn,LFO
+LFO,Cross Step,RFI
+RFI,Step Behind,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Lutz,RBO
+RBO,Toe Loop,RBO
+RBO,Loop,RBO

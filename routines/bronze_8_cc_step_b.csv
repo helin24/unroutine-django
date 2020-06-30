@@ -1,0 +1,21 @@
+Entry,Move,Exit
+RFI,Step,LFO
+LFO,Cross Roll,RFO
+RFO,Three Turn,RBI
+RBI,Power Pull,RBO
+RBO,Cross Step,LBI
+LBI,Three Turn,LBO
+LBO,Three Turn,LBI
+LBI,Step,RFO
+RFO,Full Twizzle,RFO
+RFO,Half Twizzle,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFI
+LFI,Bracket,LBO

@@ -1,0 +1,42 @@
+Entry,Move,Exit
+LFO,Two Foot Spin,RBO
+RBO,Cross Roll,LBO
+LBO,Cross Roll,RBO
+RBO,Step,LFO
+LFO,Lunge,LFO
+LFO,Step,RFO
+RFO,Three Turn,RBI
+RBI,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Split Jump,LFI
+LFI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Sit Spin,RBO
+RBO,Back Sit Spin,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Step,RBI
+RBI,Spiral,RBI
+RBI,Step,LBO
+LBO,Lutz,RBO
+RBO,Toe Loop,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Snowplow Stop,RBO

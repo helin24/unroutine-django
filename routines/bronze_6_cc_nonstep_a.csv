@@ -1,0 +1,76 @@
+Entry,Move,Exit
+RBO,Cross Step,LBI
+LBI,Step,RFI
+RFI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Snowplow Stop,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Sit Spin,RBO
+RBO,Back Upright Spin,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Cross Roll,RFO
+RFO,Step Behind,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
+RBO,Push,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Spiral,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Cross Step,RFI
+RFI,Step Behind,LFO
+LFO,Push,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Under Push,RBI
+RBI,Snowplow Stop,LBO
