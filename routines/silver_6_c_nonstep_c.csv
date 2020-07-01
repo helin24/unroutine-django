@@ -1,0 +1,32 @@
+Entry,Move,Exit
+RBI,Step,LBO
+LBO,Crosover,LBO
+LBO,Crosover,LBO
+LBO,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Flip,LBO
+LBO,Toe Loop,LBO
+LBO,Loop,LBO
+LBO,Step,RFO
+RFO,Three Turn,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Hop,LBO
+LBO,Cross Step,RBI
+RBI,Cross Step,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Step,RFO
+RFO,Axel,LBO
+LBO,Toe Loop,LBO
+LBO,Step,RFO
+RFO,Three Turn,RBI
+RBI,Cross Step,LBI
+LBI,Step,RFO
+RFO,Forward Camel Spin,LBO

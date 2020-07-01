@@ -1,0 +1,26 @@
+Entry,Move,Exit
+LFO,Step,RFI
+RFI,Lunge,RFI
+RFI,Step,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Salchow,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Flying Camel Spin,RBO
+RBO,Back Sit Spin,RBO
+RBO,Step,LFO
+LFO,Forward Sit Spin to Forward Upright Spin,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Spiral,LBO
+LBO,Power Pull,LBI
+LBI,Power Pull,LBO
+LBO,Lutz,RBO

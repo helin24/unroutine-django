@@ -1,0 +1,31 @@
+Entry,Move,Exit
+LFO,Three Turn,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Spiral,LBI
+LBI,Step,RBO
+RBO,Push,RBO
+RBO,Three Turn,RFI
+RFI,Step,LFI
+LFI,Three Turn,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Flying Camel Spin,RBO
+RBO,Back Sit Spin,RBO
+RBO,Back Upright Spin,RBO
+RBO,Step,LFO
+LFO,Forward Sit Spin,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Cross Roll,RFO
+RFO,Cross Roll,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Weight Change,RBO
+RBO,Spiral,RBO
+RBO,Cross Roll,LBO
+LBO,Lutz,RBO

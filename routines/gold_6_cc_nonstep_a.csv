@@ -1,0 +1,53 @@
+Entry,Move,Exit
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Layback Spin,RBO
+RBO,Step,LFO
+LFO,Cross Step,RFI
+RFI,Step Behind,LFI
+LFI,Spread Eagle,LFI
+LFI,Mohawk,RBI
+RBI,Cross Step,LBI
+LBI,Cross Step,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Stag Jump,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Toe Loop,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Crososover,LFO
+LFO,Spiral,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Double Salchow,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Double Toe Loop,RBO
+RBO,Step,LFO
+LFO,Pivot,LFO
+LFO,Snowplow Stop,RFO

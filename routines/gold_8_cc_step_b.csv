@@ -1,0 +1,15 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Toe Tap Around (3-step),LBO
+LBO,Cross Step,RBI
+RBI,Toe Tap Around (3-step),LBO
+LBO,Cross Step,RBI
+RBI,Pivot,RBO
+RBO,Side Toe Hop,LFO
+LFO,Three Turn,LBI

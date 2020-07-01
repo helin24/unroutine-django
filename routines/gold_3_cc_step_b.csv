@@ -1,0 +1,31 @@
+Entry,Move,Exit
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Side Toe Hop,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Cross Step,RBI
+RBI,Toe Tap Around (3-step),LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Push,LFO
+LFO,Step,RFI
+RFI,Spread Eagle,RFI
+RFI,Three Turn,RBO
+RBO,Under Push,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Under Push,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Mohawk,RBO

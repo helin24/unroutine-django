@@ -1,0 +1,76 @@
+Entry,Move,Exit
+RFO,Toe Tap Around (3-step),LBO
+LBO,Cross Roll,RBO
+RBO,Step,LBO
+LBO,Weight Change,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Three Turn,RFO
+RFO,Cross Step,LFI
+LFI,Step,RFI
+RFI,Spread Eagle,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Step Behind,LFI
+LFI,Mohawk,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Crossover,RBO
+RBO,Lutz,LBO
+LBO,Power Pull,LBI
+LBI,Power Pull,LBO
+LBO,Three Turn,LFI
+LFI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Three Turn,RFO
+RFO,Three Turn,RBI
+RBI,Step,LBO
+LBO,Step,RFO
+RFO,Axel,LBO
+LBO,Euler / Half Loop,RBI
+RBI,Salchow,LBO
+LBO,Step,RFO
+RFO,Three Turn,RBI
+RBI,Weight Change,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Attitude,RFO
+RFO,Forward Layback Spin,LBO
+LBO,Back Sit Spin,LBO
+LBO,Back Upright Spin,LBO
+LBO,Side Toe Hop,RFO
+RFO,Three Turn,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Step,RFO
+RFO,Crossover,RFO
+RFO,Crossover,RFO
+RFO,Crossover,RFO
+RFO,Spiral,RFO
+RFO,Change Weight,RFI
+RFI,Spiral,RFI
+RFI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Crossover,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Flip,LBO
+LBO,Loop,LBO
+LBO,Step,RFO
+RFO,Cross Step,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Weight Change,LBO
+LBO,Crossover,LBO
+LBO,Axel,LBO
+LBO,Step,RFO
+RFO,Tango Stop,LBI

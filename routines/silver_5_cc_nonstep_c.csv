@@ -1,0 +1,10 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Salchow,RBO
+RBO,Toe Loop,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Forward Layback Spin,RBO

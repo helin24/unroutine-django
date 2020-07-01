@@ -1,0 +1,67 @@
+Entry,Move,Exit
+LBO,Cross Step,RBI
+RBI,Three Turn,RBO
+RBO,Bracket,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Flying Camel Spin,RBO
+RBO,Step,LFO
+LFO,Forward Sit Spin,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Spiral,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Cross Step,RFI
+RFI,Step Behind,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Double Salchow,RBO
+RBO,Step,LBI
+LBI,Crossover,LBO
+LBO,Lutz,RBO
+RBO,Toe Loop,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Step,LBO
+LBO,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Stag Jump,LFI
+LFI,Step,RFI
+RFI,Three Turn,RFO
+RFO,Step,LFO
+LFO,Forward Layback Spin,RBO

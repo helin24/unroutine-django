@@ -1,0 +1,70 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Cross Step,RBI
+RBI,Cross Step,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Cross Step,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Toe Loop,RBO
+RBO,Under Push,RBI
+RBI,Weight Change,RBO
+RBO,Full Twizzle,RBO
+RBO,Full Twizzle,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Spiral,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Power Pull,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Weight Change,LBO
+LBO,Cross Step,RBI
+RBI,Power Pull,RBO
+RBO,Cross Step,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Weight Change,LBO
+LBO,Crossover,LBO
+LBO,Lutz,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Forward Camel Spin to Forward Sit Spin to Forward Upright Spin,RBO
+RBO,Back Sit Spin,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Bunny Hop,LFO
+LFO,Lunge,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Step,RFO
+RFO,Lunge,RFO
+RFO,Opposite Direction Forward Sit Spin,RBI
+RBI,Step,LFO
+LFO,Forward Sit Spin,RBO

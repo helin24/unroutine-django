@@ -1,0 +1,66 @@
+Entry,Move,Exit
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Cross Step,LBI
+LBI,Step,RBO
+RBO,Step,LBI
+LBI,Snowplow Stop,RBO
+RBO,Step,LFO
+LFO,Bunny Hop,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Push,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Step,LFO
+LFO,Push,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Side Toe Hop,LFO
+LFO,Full Twizzle,LFO
+LFO,Half Twizzle,LBI
+LBI,Salchow,RBO
+RBO,Loop,RBO
+RBO,Side Toe Hop,LFO
+LFO,Step,RFI
+RFI,Push,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Forward Upright Spin,RBO
+RBO,Back Upright Spin,RBO
+RBO,Step,LFO
+LFO,Forward Upright Spin,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Crossover,LBO
+LBO,Crossover,LBO
+LBO,Weight Change,LBI
+LBI,Weight Change,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Cross Step,LBI
+LBI,Power Pull,LBO
+LBO,Lutz,RBO

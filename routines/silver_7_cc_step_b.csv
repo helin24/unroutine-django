@@ -1,0 +1,40 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Push,LFO
+LFO,Bunny Hop,LFO
+LFO,Step,RFI
+RFI,Push,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Step,LBI
+LBI,Cross Step,RBI
+RBI,Cross Step,LBI
+LBI,Step,RBI
+RBI,Step,LFO
+LFO,Full Twizzle,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Under Push,RBI
+RBI,Rocker,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Rocker,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Step Behind,LFI
+LFI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Hop,RBO
+RBO,Split Jump,LFI
+LFI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step Behind,LBI
+LBI,Step,RBO
+RBO,Cross Step,LBI
+LBI,Side Toe Hop,RFO
+RFO,Three Turn,RBI
+RBI,Side Toe Hop,LFO
+LFO,Lunge,LFO

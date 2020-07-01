@@ -1,0 +1,68 @@
+Entry,Move,Exit
+LFO,Step,RFO
+RFO,Counter,RBO
+RBO,Spiral,RBO
+RBO,Under Push,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Three Turn,RFI
+RFI,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Spiral,LFO
+LFO,Swing Roll,LFI
+LFI,Spread Eagle,LFI
+LFI,Push,LFO
+LFO,Three Turn,LBI
+LBI,Three Turn,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Three Turn,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Spread Eagle,LFO
+LFO,Rocker,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Full Twizzle,RBI
+RBI,Full Twizzle,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Loop,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Salchow,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Flying Sit Spin,RBO
