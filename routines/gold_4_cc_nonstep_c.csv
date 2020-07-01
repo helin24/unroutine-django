@@ -1,0 +1,32 @@
+Entry,Move,Exit
+RFO,Mohawk,LBO
+LBO,Lutz,RBO
+RBO,Euler,LBI
+LBI,Flip,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Cross Step,RFI
+RFI,Weight Change,RFO
+RFO,Swing Roll,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Toe Loop,RBO
+RBO,Weight Change,RBI
+RBI,Toe Tap Around (3-step),LFI
+LFI,Mohawk,RBI
+RBI,Under Push,RBI
+RBI,Step,LFO
+LFO,Flying Camel Spin,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Flip,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Camel Spin to Forward Sit Spin,RBO
+RBO,Back Upright Spin,RBO

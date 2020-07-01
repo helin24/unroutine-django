@@ -1,0 +1,34 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LBI
+LBI,Weight Change,LBO
+LBO,Step,RBI
+RBI,Toe Tap Around (3-step),LBO
+LBO,Cross Step,RBI
+RBI,Three Turn,RFO
+RFO,Push,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Sep,LFO
+LFO,Lunge,LFO
+LFO,Three Turn,LBI
+LBI,Three Turn,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Full Twizzle,RFI
+RFI,Push,RFO
+RFO,Cross Step,LFI
+LFI,Push,LFO
+LFO,Step Behind,RFI
+RFI,Three Turn,RBO
+RBO,Cross Roll,LBO
+LBO,Step,RFO
+RFO,Three Turn,RBI

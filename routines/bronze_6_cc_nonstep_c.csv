@@ -1,0 +1,13 @@
+Entry,Move,Exit
+RBO,Under Push,RBI
+RBI,Step,LBO
+LBO,Step,RBI
+RBI,Three Turn,RFO
+RFO,Step,LFI
+LFI,Push,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Upright Spin,RBO

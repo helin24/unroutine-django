@@ -1,0 +1,23 @@
+Entry,Move,Exit
+LBO,Step,RBI
+RBI,Weight Change,RBO
+RBO,Step,LFI
+LFI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Step,LBO
+LBO,Step,RFO
+RFO,Crossover,RFO
+RFO,Step,LFI
+LFI,Step,RFO
+RFO,Step,LFI
+LFI,Bracket,LBO
+LBO,Step,RBO
+RBO,Three Turn,RFI
+RFI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Flip,LBO
+LBO,Power Pull,LBI
+LBI,Figure Loop,LBI
+LBI,Power Pull,LBO
+LBO,Pivot,LBO
+LBO,Back Upright Spin,LBO

@@ -1,0 +1,34 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Chasse,LFO
+LFO,Step,RFI
+RFI,Weight Change,RFO
+RFO,Swing Roll,RFI
+RFI,Three Turn,RBO
+RBO,Cross Step,LBI
+LBI,Toe Tap Around (3-step),RBO
+RBO,Cross Step,LBI
+LBI,Step,RBI
+RBI,Step,LBI
+LBI,Three Turn,LFO
+LFO,Step,RFI
+RFI,Three Turn,RBO
+RBO,Three Turn,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RFO
+RFO,Three Turn,RBI
+RBI,Step,LBO
+LBO,Weight Change,LBI

@@ -1,0 +1,32 @@
+Entry,Move,Exit
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Crossover,RBO
+RBO,Weight Change,RBI
+RBI,Flip,LBO
+LBO,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFO
+RFO,Step,LFI
+LFI,Weight Change,LFO
+LFO,Step,RFO
+RFO,Step,LFI
+LFI,Mohawk,RBI
+RBI,Weight Change,RBO
+RBO,Cross Roll,LBO
+LBO,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFI
+RFI,Push,RFO
+RFO,Three Turn,RBI
+RBI,Flip,LBO
+LBO,Step,RFO
+RFO,Step,LFI
+LFI,Three Turn,LBO
+LBO,Step,RBI
+RBI,Weight Change,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFO
+RFO,Forward Sit Spin,LBO

@@ -1,0 +1,42 @@
+Entry,Move,Exit
+RFI,Step,LFI
+LFI,Step,RFO
+RFO,Mohawk,LBI
+LBI,Ballet Jump,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Step,RBI
+RBI,Step,LBO
+LBO,Lutz,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFI
+RFI,Spiral,RFI
+RFI,Step,LFO
+LFO,Step,RFI
+RFI,Step,LFO
+LFO,Step,RFO
+RFO,Swing Roll,RFI
+RFI,Spread Eagle,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Salchow,RBO
+RBO,Loop,RBO
+RBO,Ballet Jump,RFI
+RFI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Forward Upright Spin,RFI

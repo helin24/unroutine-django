@@ -1,0 +1,49 @@
+Entry,Move,Exit
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Cross Step,RBI
+RBI,Step,LFI
+LFI,Mohawk,RBI
+RBI,Step,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Under Push,RBI
+RBI,Cross Step,LBI
+LBI,Rocker,LFI
+LFI,Bracket,LBO
+LBO,Three Turn,LFI
+LFI,Push,LFO
+LFO,Waltz Hop,RBO
+RBO,Toe Hop,LBI
+LBI,Step,RBI
+RBI,Step,LBO
+LBO,Cross Roll,RBO
+RBO,Under Push,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Full Twizzle,RFI
+RFI,Spread Eagle,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Step,LFI
+LFI,Rocker,LBI
+LBI,Step,RBO
+RBO,Step,LFI
+LFI,Push,LFO
+LFO,Waltz Hop,RBO
+RBO,Cross Step,LBI
+LBI,Cross Step,RBI
+RBI,Step,LFO
+LFO,Crossover,LFO
+LFO,Swing Roll,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Step,RFO
+RFO,Spread Eagle,RFO

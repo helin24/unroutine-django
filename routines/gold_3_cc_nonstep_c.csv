@@ -1,0 +1,20 @@
+Entry,Move,Exit
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Step,LFO
+LFO,Spread Eagle,LFO
+LFO,Weight Change,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Crossover,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Forward Layback Spin,RBO

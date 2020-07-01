@@ -1,0 +1,38 @@
+Entry,Move,Exit
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Push,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Toe Loop,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Push,LFO
+LFO,Push,LFO
+LFO,Three Turn,LBI
+LBI,Flip,RBO
+RBO,Loop,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Sit Spin,RBO
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,RBI
+RBI,Step,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Forward Layback Spin,RBO

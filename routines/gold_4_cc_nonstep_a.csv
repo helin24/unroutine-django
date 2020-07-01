@@ -1,0 +1,53 @@
+Entry,Move,Exit
+RBO,Pivot,RBO
+RBO,Step,LFO
+LFO,Step Behind,RFI
+RFI,Spread Eagle,RFI
+RFI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Step,LFO
+LFO,Forward Camel Spin to Forward Sit Spin to Forward Upright Spin,RBO
+RBO,Under Push,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Waltz Hop,RBO
+RBO,Crossover,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFO
+LFO,Step Behind,RBI
+RBI,Mohawk,LBI
+LBI,Cross Step,RBI
+RBI,Step,LFO
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFI
+RFI,Spread Eagle,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Spiral,LFO
+LFO,Weight Change,LFI
+LFI,Mohawk,RBI
+RBI,Cross Step,LBO
+LBO,Lutz,RBO
+RBO,Push,RBO
+RBO,Step,LBO
+LBO,Crossover,LBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
+RBO,Crossover,RBO
+RBO,Push,RBO
+RBO,Spiral,RBO
+RBO,Under Push,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Three Turn,RBO
+RBO,Step,LFO
+LFO,Axel,RBO
+RBO,Under Push,RBI

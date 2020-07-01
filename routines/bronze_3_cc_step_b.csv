@@ -1,0 +1,19 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Under Push,RBI
+RBI,Toe Tap Around (3-step),LBO
+LBO,Step,RBI
+RBI,Side Toe Hop,LFO
+LFO,Lunge,LFO
+LFO,Step,RFO
+RFO,Power Pull,RFI
+RFI,Bracket,RBO
+RBO,Step,LFO
+LFO,Cross Roll,RFO
+RFO,Swing Roll,RFI
+RFI,Three Turn,RBO
+RBO,Cross Roll,LBO
+LBO,Cross Roll,RBO

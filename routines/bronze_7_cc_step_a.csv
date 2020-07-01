@@ -1,0 +1,28 @@
+Entry,Move,Exit
+LFO,Three Turn,LBI
+LBI,Step,RBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
+LBO,Cross Step,RBI
+RBI,Step,LFI
+LFI,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Step,LFI
+LFI,Mohawk,RBI
+RBI,Power Pull,RBO
+RBO,Cross Step,LBI
+LBI,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFO
+LFO,Step,RFO
+RFO,Swing Roll,RFI
+RFI,Three Turn,RBO
+RBO,Cross Roll,LBO
+LBO,Cross Roll,RBO
+RBO,Step,LFI
+LFI,Step,RFI
+RFI,Full Twizzle,RFI
+RFI,Half Twizzle,RBO
+RBO,Step,LFO

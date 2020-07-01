@@ -1,0 +1,20 @@
+Entry,Move,Exit
+RFI,Chasse,RFI
+RFI,Step,LFI
+LFI,Step,RFI
+RFI,Step,LFI
+LFI,Step,RFO
+RFO,Crossover,RFO
+RFO,Spiral,RFO
+RFO,Step,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Step,LFI
+LFI,Mohawk,RBI
+RBI,Step,LBO
+LBO,Step,RFO
+RFO,Step,LFI
+LFI,Step,RFI
+RFI,Spread Eagle,RFI
+RFI,Three Turn,RBO

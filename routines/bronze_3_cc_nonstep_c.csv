@@ -1,0 +1,15 @@
+Entry,Move,Exit
+RBO,Step,LFO
+LFO,Cross Step,RFI
+RFI,Mohawk,LBI
+LBI,Flip,RBO
+RBO,Step,LFO
+LFO,Crossover,LFO
+LFO,Crossover,LFO
+LFO,Spiral,LFO
+LFO,Step,RFI
+RFI,Mohawk,LBI
+LBI,Step,RBO
+RBO,Hydroblade,RBO
+RBO,Step,LFO
+LFO,Forward Sit Spin,RBO
