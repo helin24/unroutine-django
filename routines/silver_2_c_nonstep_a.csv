@@ -71,6 +71,7 @@ LFI,Step,RFI
 RFI,Mohawk,LBI
 LBI,Weight Change,LBO
 LBO,Crossover,LBO
-LBO,Axel,LBO
+LBO,Step,RFO
+RFO,Axel,LBO
 LBO,Step,RFO
 RFO,Tango Stop,LBI
