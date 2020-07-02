@@ -34,7 +34,11 @@ class Command(BaseCommand):
                         abbreviation = input('Abbreviation?\n')
 
                         categoryLetter = input('Move, spin, or jump? (m, s, j)\n')
-                        category = next(filter(lambda choice: choice[0] == categoryLetter.capitalize(), CATEGORY_CHOICES))
+
+                        try:
+                            category = next(filter(lambda choice: choice[0] == categoryLetter.capitalize(), CATEGORY_CHOICES))
+                        except:
+                            continue
                         if category is None:
                             continue
                         else:
@@ -53,8 +57,11 @@ class Command(BaseCommand):
                         changeFoot = entryName[0] != exitName[0]
 
                         move = Move(name=moveName, description=description, abbreviation=abbreviation, category=category, initialLeftForC=initialLeftForC, changeFoot=changeFoot)
-                        move.save()
-                        print('Saved: ' + move.name)
+                        try:
+                            move.save()
+                            print('Saved: ' + move.name)
+                        except:
+                            print('Unable to save: ' + moveName)
 
                     entryEdge = Edge.objects.filter(abbreviation=entryName[1:]).first()
                     exitEdge = Edge.objects.filter(abbreviation=exitName[1:]).first()
@@ -62,6 +69,8 @@ class Command(BaseCommand):
                     if maybeTransition is None:
                         # Save new edge
                         transition = Transition(move=move, entry=entryEdge, exit=exitEdge)
-                        transition.save()
-                        print('Saved: %s -> %s -> %s' % (transition.entry.abbreviation, transition.move.name, transition.exit.abbreviation))
-
+                        try:
+                            transition.save()
+                            print('Saved: %s -> %s -> %s' % (transition.entry.abbreviation, transition.move.name, transition.exit.abbreviation))
+                        except:
+                            print('Unable to save: %s -> %s -> %s' % (transition.entry.abbreviation, transition.move.name, transition.exit.abbreviation))
