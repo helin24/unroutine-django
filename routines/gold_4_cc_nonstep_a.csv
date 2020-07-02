@@ -6,7 +6,9 @@ RFI,Spread Eagle,RFI
 RFI,Mohawk,LBI
 LBI,Cross Step,RBI
 RBI,Step,LFO
-LFO,Forward Camel Spin to Forward Sit Spin to Forward Upright Spin,RBO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Sit Spin,LBI
+LBI,Forward Upright Spin,RBO
 RBO,Under Push,RBI
 RBI,Step,LFO
 LFO,Three Turn,LBI

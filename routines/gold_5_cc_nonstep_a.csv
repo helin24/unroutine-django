@@ -27,5 +27,6 @@ LFO,Three Turn,LBI
 LBI,Double Salchow,RBO
 RBO,Under Push,RBI
 RBI,Step,LFO
-LFO,Forward Camel Spin to Forward Sit Spin,RBO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Sit Spin,RBO
 RBO,Under Push,RBI

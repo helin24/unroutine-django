@@ -13,7 +13,8 @@ RBI,Step,LFO
 LFO,Flying Camel Spin,RBO
 RBO,Back Sit Spin,RBO
 RBO,Step,LFO
-LFO,Forward Sit Spin to Forward Upright Spin,RBO
+LFO,Forward Sit Spin,LBI
+LBI,Forward Upright Spin,RBO
 RBO,Step,LFO
 LFO,Step,RFI
 RFI,Mohawk,LBI

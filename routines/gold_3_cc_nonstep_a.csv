@@ -77,7 +77,8 @@ LFO,Three Turn,LBI
 LBI,Step,RBO
 RBO,Under Push,RBI
 RBI,Step,LFO
-LFO,Forward Camel Spin to Forward Sit Spin,RBO
+LFO,Forward Camel Spin,RBO
+RBO,Forward Sit Spin,RBO
 RBO,Back Sit Spin,RBO
 RBO,Step,LFO
 LFO,Step,RFI
