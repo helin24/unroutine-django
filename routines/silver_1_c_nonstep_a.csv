@@ -58,7 +58,8 @@ LFI,Full Twizzle,LFI
 LFI,Half Twizzle,LBO
 LBO,Under Push,LBI
 LBI,Step,RFO
-RFO,Forward Layback Spin to Forward Sit Spin,LBO
+RFO,Forward Layback Spin,RBI
+RBI,Forward Layback Spin,LBO
 LBO,Back Sit Spin,LBO
 LBO,Under Push,LBI
 LBI,Single Toe Hop,LFO

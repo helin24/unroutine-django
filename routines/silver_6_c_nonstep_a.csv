@@ -48,6 +48,7 @@ LBO,Step,RFO
 RFO,Three Turn,RBI
 RBI,Cross Step,LBI
 LBI,Step,RFO
-RFO,Forward Camel Spin to Forward Sit Spin,LBO
+RFO,Forward Camel Spin,RBI
+RBI,Forward Camel Spin,LBO
 LBO,Back Sit Spin,LBO
 LBO,Snowplow Stop,RBO

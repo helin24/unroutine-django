@@ -44,7 +44,9 @@ RBO,Step,LFO
 LFO,Step,RFI
 RFI,Three Turn,RBO
 RBO,Step,LFO
-LFO,Forward Camel Spin to Forward Sit Spin to Forward Upright Spin,RBO
+LFO,Forward Camel Spin,LBI
+LBI,Forward Sit Spin,LBI
+LBI,Forward Upright Spin,RBO
 RBO,Back Sit Spin,RBO
 RBO,Step,LFO
 LFO,Three Turn,LBI
