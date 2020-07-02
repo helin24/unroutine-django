@@ -1,4 +1,5 @@
-from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot
+from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence
+import json
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -63,6 +64,23 @@ class Generator:
         startEdge = transitions[0].entry
 
         return {'transitions': transitions, 'startEdge': startEdge, 'steps': steps, 'clockwise': cw}
+
+    def makeFromDatabase(self, cw):
+        sequence = Sequence.objects.first()
+        decoded = json.loads(sequence.transitionsJson)
+        objects = decoded['transitions']
+        transitions = []
+        for t in objects:
+            transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
+            if transition is None:
+                raise Exception('No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit']))
+            transitions.append(transition)
+
+        startFoot = self.chooseStartingFoot(sequence.initialLeftForC, cw)
+        transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
+        startEdge = transitionsWithFoot[0].entry
+
+        return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw}
 
     def transitionsWithFoot(self, transitions, startFoot):
         currentFootIsLeft = startFoot == 'L'
