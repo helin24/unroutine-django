@@ -1,5 +1,5 @@
 from django.db import models
-from sequences.constants import CATEGORY_CHOICES
+from sequences.constants import CATEGORY_CHOICES, LEVEL_CHOICES
 
 # Create your models here.
 class Move(models.Model):
@@ -88,3 +88,15 @@ class TransitionWithFoot():
         transition['entry'] = self.entry.toObject()
         transition['exit'] = self.exit.toObject()
         return transition
+
+class Sequence(models.Model):
+    transitionsJson = models.TextField()
+    transitionsCount = models.IntegerField()
+    ratingsCount = models.IntegerField(default=0)
+    ratingsAverage = models.DecimalField(null=True, blank=True, decimal_places=6, max_digits=7)
+    level = models.CharField(max_length=5, choices=LEVEL_CHOICES, null=True, blank=True)
+    isStep = models.BooleanField(default=False)
+    hasJumps = models.BooleanField()
+    hasSpins = models.BooleanField()
+    initialLeftForC = models.BooleanField(null=True)
+

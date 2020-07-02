@@ -18,6 +18,8 @@ def index(request):
         if 'clockwise' in request.POST:
             cw = request.POST['clockwise'] == 'on'
     template = loader.get_template('sequences/index.html')
+    # This is if we want to generate from database
+    # result = Generator().makeFromDatabase(cw)
     result = Generator().makeRandom(request, steps, cw)
 
     return HttpResponse(template.render(result, request))
