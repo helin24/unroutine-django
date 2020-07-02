@@ -93,7 +93,7 @@ class Sequence(models.Model):
     transitionsJson = models.TextField()
     transitionsCount = models.IntegerField()
     ratingsCount = models.IntegerField(default=0)
-    ratingsAverage = models.DecimalField(null=True, decimal_places=6, max_digits=7)
+    ratingsAverage = models.DecimalField(null=True, blank=True, decimal_places=6, max_digits=7)
     level = models.CharField(max_length=5, choices=LEVEL_CHOICES, null=True, blank=True)
     isStep = models.BooleanField(default=False)
     hasJumps = models.BooleanField()
