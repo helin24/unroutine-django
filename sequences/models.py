@@ -1,12 +1,8 @@
 from django.db import models
+from sequences.constants import CATEGORY_CHOICES
 
 # Create your models here.
 class Move(models.Model):
-    CATEGORY_CHOICES = [
-        ('J', 'Jump'),
-        ('S', 'Spin'),
-        ('M', 'Move'),
-    ]
     name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200)
     abbreviation = models.CharField(max_length=10, unique=True)
