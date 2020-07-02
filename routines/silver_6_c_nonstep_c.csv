@@ -1,7 +1,7 @@
 Entry,Move,Exit
 RBI,Step,LBO
-LBO,Crosover,LBO
-LBO,Crosover,LBO
+LBO,Crossover,LBO
+LBO,Crossover,LBO
 LBO,Step,LBO
 LBO,Cross Step,RBI
 RBI,Step,RFO
@@ -16,7 +16,7 @@ LFO,Three Turn,LBI
 LBI,Step,RBO
 RBO,Weight Change,RBI
 RBI,Step,LBO
-LBO,Hop,LBO
+LBO,Toe Hop,LBO
 LBO,Cross Step,RBI
 RBI,Cross Step,LBI
 LBI,Step,RBO

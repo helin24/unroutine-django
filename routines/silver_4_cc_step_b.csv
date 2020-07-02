@@ -17,7 +17,7 @@ RBI,Three Turn,RFO
 RFO,Push,RFI
 RFI,Mohawk,LBI
 LBI,Cross Step,RBI
-RBI,Sep,LFO
+RBI,Step,LFO
 LFO,Lunge,LFO
 LFO,Three Turn,LBI
 LBI,Three Turn,LFO
