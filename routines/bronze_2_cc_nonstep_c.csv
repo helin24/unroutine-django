@@ -1,7 +1,7 @@
 Entry,Move,Exit
 LBO,Cross Step,RBI
 RBI,Step,LFO
-LFO,Foward Camel Spin,RBO
+LFO,Forward Camel Spin,RBO
 RBO,Under Push,RBI
 RBI,Push,RBO
 RBO,Three Turn,RFI

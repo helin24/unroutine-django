@@ -62,11 +62,13 @@ RFO,Forward Layback Spin,RBI
 RBI,Forward Layback Spin,LBO
 LBO,Back Sit Spin,LBO
 LBO,Under Push,LBI
-LBI,Single Toe Hop,LFO
+LBI,Step,RFI
+RFI,Toe Hop,LFO
 LFO,Three Turn,LBI
 LBI,Step,RFO
 RFO,Forward Camel Spin,LBO
-LBO,Back Camel Spin to Back Sit Spin,LBO
+LBO,Back Camel Spin,LBO
+LBO,Back Sit Spin,LBO
 LBO,Under Push,LBI
 LBI,Step,RFO
 RFO,Three Turn,RBI

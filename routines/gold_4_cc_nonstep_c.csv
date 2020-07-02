@@ -1,7 +1,7 @@
 Entry,Move,Exit
 RFO,Mohawk,LBO
 LBO,Lutz,RBO
-RBO,Euler,LBI
+RBO,Euler / Half Loop,LBI
 LBI,Flip,RBO
 RBO,Step,LFO
 LFO,Crossover,LFO

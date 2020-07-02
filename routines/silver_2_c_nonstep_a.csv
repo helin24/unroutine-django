@@ -55,7 +55,7 @@ RFO,Crossover,RFO
 RFO,Crossover,RFO
 RFO,Crossover,RFO
 RFO,Spiral,RFO
-RFO,Change Weight,RFI
+RFO,Weight Change,RFI
 RFI,Spiral,RFI
 RFI,Step,LFI
 LFI,Mohawk,RBI
