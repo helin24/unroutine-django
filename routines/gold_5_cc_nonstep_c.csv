@@ -62,6 +62,6 @@ RBO,Step,LFO
 LFO,Axel,RBO
 RBO,Stag Jump,LFI
 LFI,Step,RFI
-RFI,Three Turn,RFO
-RFO,Step,LFO
+RFI,Three Turn,RBO
+RBO,Step,LFO
 LFO,Forward Layback Spin,RBO
