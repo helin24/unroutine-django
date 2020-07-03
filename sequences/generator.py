@@ -82,6 +82,15 @@ class Generator:
 
         return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id}
 
+    def makeFromGenetic(self, cw, stepSequence, level):
+        # find random segment from CSV
+        # find other segment from CSV and make sure it's the same initialLeftForC - but for step sequence this doesn't really matter?
+        # join somewhere in there
+        # save to database
+        # send for rating
+        pass
+
+
     def transitionsWithFoot(self, transitions, startFoot):
         currentFootIsLeft = startFoot == 'L'
 
