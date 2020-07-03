@@ -4,7 +4,7 @@ from sequences.constants import CATEGORY_CHOICES, CSV_TO_LEVEL_MAP
 import csv
 import os
 from django.conf import settings
-from sequences.utils import sequenceNameFromRoutineFeatures
+from sequences.utils import sequenceNameFromRoutineFeatures, transitionMap
 import json
 
 routineDirectory = settings.BASE_DIR + '/routines'
@@ -72,7 +72,7 @@ class Command(BaseCommand):
                         print('Unable to import %s' % entry.name)
                         continue
 
-                    transitions.append(self.transitionMap(transition))
+                    transitions.append(transitionMap(transition))
 
             name = sequenceNameFromRoutineFeatures(level, number, letter)
             sequence = Sequence.objects.filter(name=name).first()
@@ -90,13 +90,6 @@ class Command(BaseCommand):
                 )
             sequence.transitionsJson = json.dumps({'transitions': transitions})
             sequence.save()
-
-    def transitionMap(self, transition):
-        return {
-            'move': transition.move.abbreviation,
-            'entry': transition.entry.abbreviation,
-            'exit': transition.exit.abbreviation,
-        }
 
     def saveNewMove(self, moveName, entryName, exitName):
         print('Not Found: ' + moveName)

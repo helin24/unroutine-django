@@ -1,6 +1,7 @@
 from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence
 import json
 import random
+from sequences.utils import transitionMap
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -142,9 +143,30 @@ class Generator:
         for t in transitionsWithFoot:
             print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
 
-        # save to database
-        # send for rating
-        return {}
+        canonicalTransitions = []
+        hasJumps = False
+        hasSpins = False
+        for t in transitionsWithFoot:
+            if t.move.category == 'J':
+                hasJumps = True
+            elif t.move.category == 'S':
+                hasSpins = True
+            canonicalTransitions.append(transitionMap(t))
+
+        ## TODO: Introduce mutations
+
+        sequence = Sequence(
+            transitionsCount=len(canonicalTransitions),
+            transitionsJson = json.dumps({'transitions': canonicalTransitions}),
+            level=level,
+            isStep = stepSequence,
+            hasJumps=hasJumps,
+            hasSpins=hasSpins,
+            initialLeftForC=first.initialLeftForC
+        )
+        sequence.save()
+
+        return {'transitions': transitionsWithFoot, 'startEdge': transitionsWithFoot[0].entry.foot + transitionsWithFoot[0].entry.abbreviation, 'steps': len(transitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
 
 
     def transitionsWithFoot(self, transitions, startFoot):
