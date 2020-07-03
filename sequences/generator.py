@@ -83,12 +83,15 @@ class Generator:
         return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id}
 
     def makeFromGenetic(self, cw, stepSequence, level):
-        # find random segment from CSV
-        # find other segment from CSV and make sure it's the same initialLeftForC - but for step sequence this doesn't really matter?
+        # find sequences that are this level and step sequence
+        randomQuery = Sequence.objects.filter(isStep=stepSequence, level=level).order_by('?')
+        first = randomQuery.first()
+        second = randomQuery.exclude(pk=first.id).first()
         # join somewhere in there
+        # make it a reasonable length
         # save to database
         # send for rating
-        pass
+        return {}
 
 
     def transitionsWithFoot(self, transitions, startFoot):

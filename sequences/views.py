@@ -44,7 +44,7 @@ def generate(request):
         cw = request.POST.get('clockwise') == 'on'
         step = request.POST.get('step') == 'on'
         level = request.POST.get('level')
-        result = Generator().makeFromDatabase(cw)
+        result = Generator().makeFromGenetic(cw, step, level)
     else:
         result = {}
     template = loader.get_template('sequences/generate.html')
