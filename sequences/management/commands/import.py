@@ -16,7 +16,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # look at all csv files
-        count = 0
         for entry in os.scandir(routineDirectory):
             print(entry.name)
             level, number, direction, sequenceType, letter = entry.name.split('.')[0].split('_')
@@ -29,6 +28,9 @@ class Command(BaseCommand):
                 hasJumps = False
                 hasSpins = False
                 firstFoot = None
+
+                # Considered whether to add hasDirection tracking, but decided to assume all are directional
+                # hasDirection = False
 
                 for entryName, moveName, exitName in reader:
                     maybeMove = Move.objects.filter(name__iexact=moveName).first()
@@ -46,6 +48,9 @@ class Command(BaseCommand):
                         hasJumps = True
                     elif move.category == 'S':
                         hasSpins = True
+
+                    # if move.initialLeftForC is not None:
+                    #     hasDirection = True
 
                     if firstFoot is None:
                         firstFoot = entryName[0]
@@ -81,13 +86,10 @@ class Command(BaseCommand):
                     hasJumps=hasJumps,
                     hasSpins=hasSpins,
                     initialLeftForC=(firstFoot == 'L') == (direction == 'c')
+                    # initialLeftForC=(firstFoot == 'L') == (direction == 'c') if hasDirection else None
                 )
             sequence.transitionsJson = json.dumps({'transitions': transitions})
             sequence.save()
-
-            count += 1
-            if count > 0:
-                break
 
     def transitionMap(self, transition):
         return {
