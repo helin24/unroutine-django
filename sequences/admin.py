@@ -13,7 +13,7 @@ class TransitionAdmin(admin.ModelAdmin):
     list_display = ('move', 'entry', 'exit')
 
 class SequenceAdmin(admin.ModelAdmin):
-    list_display = ('transitionsCount', 'ratingsCount', 'ratingsAverage', 'level', 'isStep', 'hasJumps', 'hasSpins', 'initialLeftForC')
+    list_display = ('name', 'transitionsCount', 'ratingsCount', 'ratingsAverage', 'level', 'isStep', 'hasJumps', 'hasSpins', 'initialLeftForC')
 
 admin.site.register(Edge, EdgeAdmin)
 admin.site.register(Move, MoveAdmin)
