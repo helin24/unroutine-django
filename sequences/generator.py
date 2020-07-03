@@ -80,7 +80,7 @@ class Generator:
         transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
         startEdge = transitionsWithFoot[0].entry
 
-        return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw}
+        return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id}
 
     def transitionsWithFoot(self, transitions, startFoot):
         currentFootIsLeft = startFoot == 'L'

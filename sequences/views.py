@@ -36,3 +36,9 @@ def json(request):
     context['startEdge'] = context['startEdge'].toObject()
     return JsonResponse(context, safe=False)
 
+def generate(request):
+    cw = True
+    result = Generator().makeFromDatabase(cw)
+    template = loader.get_template('sequences/generate.html')
+    return HttpResponse(template.render(result, request))
+
