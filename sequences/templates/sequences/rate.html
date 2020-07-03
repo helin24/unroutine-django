@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sequences/style.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div>{{rating}}</div>
+<form action="/sequences/generate" method="get">
+    <input type="submit" value="Generate another"/>
+</form>
+
