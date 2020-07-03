@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sequences/style.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<form action="/sequences/rate" method="post">
+{% csrf_token %}
+    <div>
+      <label for="rating">Rating</label>
+      <input type="range" min="1" max="4" step="1" name="rating" id="rating">
+      <input type="hidden" id="sequenceId" name="sequenceId" value={{id}}>
+    </div>
+    <input type="submit" value="Rate"/>
+</form>
+{% if transitions %}
+    {{startEdge.foot}}{{startEdge.abbreviation}}
+    <ul>
+    {% for transition in transitions %}
+        <li>
+          {{transition.move.name}} to {{transition.exit.foot}}{{transition.exit.abbreviation}}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

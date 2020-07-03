@@ -42,3 +42,11 @@ def generate(request):
     template = loader.get_template('sequences/generate.html')
     return HttpResponse(template.render(result, request))
 
+def rate(request):
+    rating = request.POST.get('rating')
+    sequenceId = request.POST.get('sequenceId')
+    print(rating, sequenceId)
+
+    template = loader.get_template('sequences/rate.html')
+    return HttpResponse(template.render({'rating': rating}, request))
+
