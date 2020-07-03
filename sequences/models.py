@@ -99,5 +99,5 @@ class Sequence(models.Model):
     hasJumps = models.BooleanField()
     hasSpins = models.BooleanField()
     initialLeftForC = models.BooleanField(null=True)
-    name = models.CharField(max_length=5, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
 
