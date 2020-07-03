@@ -2,15 +2,37 @@
 <link rel="stylesheet" type="text/css" href="{% static 'sequences/style.css' %}">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% if transitions %}
 <form action="/sequences/rate" method="post">
-{% csrf_token %}
-    <div>
-      <label for="rating">Rating</label>
-      <input type="range" min="1" max="4" step="1" name="rating" id="rating">
-      <input type="hidden" id="sequenceId" name="sequenceId" value={{id}}>
-    </div>
-    <input type="submit" value="Rate"/>
+  {% csrf_token %}
+  <div>
+    <label for="rating">Rating</label>
+    <input type="range" min="1" max="4" step="1" name="rating" id="rating">
+    <input type="hidden" id="sequenceId" name="sequenceId" value={{id}}>
+  </div>
+  <input type="submit" value="Rate"/>
 </form>
+{% else %}
+<form action="" method="post">
+  {% csrf_token %}
+  <div>
+    <div>
+      <label for="clockwise">Clockwise?</label>
+      <input type="checkbox" name="clockwise" id="clockwise" {% if clockwise %}checked{% endif %} />
+    </div>
+    <div>
+      <label for="level">Level</label>
+      <select name="level" id="level">
+        {% for level in levels %}
+        <option value={{level.0}}>{{level.1}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <input type="submit" value="Generate"/>
+  </div>
+</form>
+{% endif %}
 {% if transitions %}
     {{startEdge.foot}}{{startEdge.abbreviation}}
     <ul>
