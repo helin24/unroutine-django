@@ -6,6 +6,7 @@ from django.core import serializers
 from .models import Edge, Transition
 from .generator import Generator
 from .rating import updateRating
+from .constants import LEVEL_CHOICES
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -38,14 +39,22 @@ def json(request):
     return JsonResponse(context, safe=False)
 
 def generate(request):
-    cw = True
-    result = Generator().makeFromDatabase(cw)
+    cw = False
+    if request.POST:
+        cw = request.POST.get('clockwise') == 'on'
+        step = request.POST.get('step') == 'on'
+        level = request.POST.get('level')
+        result = Generator().makeFromGenetic(cw, step, level)
+    else:
+        result = {}
     template = loader.get_template('sequences/generate.html')
+    result['levels'] = LEVEL_CHOICES
     return HttpResponse(template.render(result, request))
 
 def rate(request):
     rating = int(request.POST.get('rating'))
     sequenceId = request.POST.get('sequenceId')
+    level = request.POST.get('level')
     updateRating(sequenceId, rating)
 
     template = loader.get_template('sequences/rate.html')

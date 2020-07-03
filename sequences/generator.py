@@ -1,5 +1,7 @@
 from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence
 import json
+import random
+from sequences.utils import transitionMap
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -81,6 +83,91 @@ class Generator:
         startEdge = transitionsWithFoot[0].entry
 
         return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id}
+
+    def makeFromGenetic(self, cw, stepSequence, level):
+        # find sequences that are this level and step sequence
+        randomQuery = Sequence.objects.filter(isStep=stepSequence, level=level, name__isnull=False).order_by('?')
+        first = randomQuery.first()
+        second = randomQuery.exclude(pk=first.id).first()
+        if second is None:
+            return {'error': 'Not enough routines to generate'}
+
+        randomCutoff = random.randint(4, 8)
+
+        # Assign foot for each transition
+        decoded = json.loads(first.transitionsJson)
+        transitionsObjects = decoded['transitions'][:randomCutoff]
+        startFoot = self.chooseStartingFoot(first.initialLeftForC, cw)
+        transitions = []
+        for t in transitionsObjects:
+            transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
+            if transition is None:
+                return {'error': 'No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit'])}
+            transitions.append(transition)
+
+        transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
+
+        secondDecoded = json.loads(second.transitionsJson)
+        secondObjects = secondDecoded['transitions']
+        secondStartFoot = self.chooseStartingFoot(second.initialLeftForC, cw)
+        secondTransitions = []
+        for t in secondObjects:
+            transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
+            if transition is None:
+                return {'error': 'No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit'])}
+            secondTransitions.append(transition)
+
+        secondTransitionsWithFoot = self.transitionsWithFoot(secondTransitions, startFoot)
+
+        # join somewhere in there
+        endEdge = transitionsWithFoot[-1].exit
+
+        firstIdx = None
+        for idx in range(0, len(secondTransitionsWithFoot)):
+            transition = secondTransitionsWithFoot[idx]
+            if transition.entry.foot == endEdge.foot and transition.entry.abbreviation == endEdge.abbreviation:
+                firstIdx = idx
+                break
+
+        if firstIdx == None:
+            for t in transitionsWithFoot:
+                print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
+            print(' ')
+            for t in secondTransitionsWithFoot:
+                print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
+            return {'error': 'No matching transition found to join %s and %s with %s' % (first.id, second.id, endEdge)}
+
+        for offset in range(0, 5):
+            transitionsWithFoot.append(secondTransitionsWithFoot[firstIdx + offset])
+
+        for t in transitionsWithFoot:
+            print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
+
+        canonicalTransitions = []
+        hasJumps = False
+        hasSpins = False
+        for t in transitionsWithFoot:
+            if t.move.category == 'J':
+                hasJumps = True
+            elif t.move.category == 'S':
+                hasSpins = True
+            canonicalTransitions.append(transitionMap(t))
+
+        ## TODO: Introduce mutations
+
+        sequence = Sequence(
+            transitionsCount=len(canonicalTransitions),
+            transitionsJson = json.dumps({'transitions': canonicalTransitions}),
+            level=level,
+            isStep = stepSequence,
+            hasJumps=hasJumps,
+            hasSpins=hasSpins,
+            initialLeftForC=first.initialLeftForC
+        )
+        sequence.save()
+
+        return {'transitions': transitionsWithFoot, 'startEdge': transitionsWithFoot[0].entry.foot + transitionsWithFoot[0].entry.abbreviation, 'steps': len(transitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
+
 
     def transitionsWithFoot(self, transitions, startFoot):
         currentFootIsLeft = startFoot == 'L'
