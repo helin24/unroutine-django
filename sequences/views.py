@@ -5,6 +5,7 @@ from django.template import loader
 from django.core import serializers
 from .models import Edge, Transition
 from .generator import Generator
+from .rating import updateRating
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -43,9 +44,9 @@ def generate(request):
     return HttpResponse(template.render(result, request))
 
 def rate(request):
-    rating = request.POST.get('rating')
+    rating = int(request.POST.get('rating'))
     sequenceId = request.POST.get('sequenceId')
-    print(rating, sequenceId)
+    updateRating(sequenceId, rating)
 
     template = loader.get_template('sequences/rate.html')
     return HttpResponse(template.render({'rating': rating}, request))
