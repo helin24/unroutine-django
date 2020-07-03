@@ -42,6 +42,7 @@ def generate(request):
     cw = False
     if request.POST:
         cw = request.POST.get('clockwise') == 'on'
+        step = request.POST.get('step') == 'on'
         level = request.POST.get('level')
         result = Generator().makeFromDatabase(cw)
     else:
