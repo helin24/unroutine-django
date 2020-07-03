@@ -37,6 +37,9 @@
   </div>
 </form>
 {% endif %}
+{% if error %}
+{{error}}
+{% endif %}
 {% if transitions %}
     {{startEdge.foot}}{{startEdge.abbreviation}}
     <ul>

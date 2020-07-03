@@ -90,7 +90,7 @@ class Generator:
         first = randomQuery.first()
         second = randomQuery.exclude(pk=first.id).first()
         if second is None:
-            return {}
+            return {'error': 'Not enough routines to generate'}
 
         randomCutoff = random.randint(4, 8)
 
@@ -102,7 +102,7 @@ class Generator:
         for t in transitionsObjects:
             transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
             if transition is None:
-                raise Exception('No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit']))
+                return {'error': 'No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit'])}
             transitions.append(transition)
 
         transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
@@ -114,7 +114,7 @@ class Generator:
         for t in secondObjects:
             transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
             if transition is None:
-                raise Exception('No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit']))
+                return {'error': 'No transition found for: %s -> %s -> %s' % (t['entry'], t['move'], t['exit'])}
             secondTransitions.append(transition)
 
         secondTransitionsWithFoot = self.transitionsWithFoot(secondTransitions, startFoot)
@@ -135,7 +135,7 @@ class Generator:
             print(' ')
             for t in secondTransitionsWithFoot:
                 print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
-            raise Exception('No matching transition found to join %s and %s with %s' % (first.id, second.id, endEdge))
+            return {'error': 'No matching transition found to join %s and %s with %s' % (first.id, second.id, endEdge)}
 
         for offset in range(0, 5):
             transitionsWithFoot.append(secondTransitionsWithFoot[firstIdx + offset])
