@@ -1,5 +1,5 @@
 from django.test import TestCase
-from sequences.models import Move, Edge, Transition
+from sequences.models import Move, Edge, Transition, TransitionWithFoot, EdgeWithFoot
 from sequences.generator import Generator
 
 class GeneratorTestCase(TestCase):
@@ -7,8 +7,10 @@ class GeneratorTestCase(TestCase):
         move = Move.objects.create(name="Three Turn", abbreviation="3Turn", changeFoot=False, initialLeftForC=None)
         tlMove = Move.objects.create(name="Toe Loop", abbreviation="TL", changeFoot=False, initialLeftForC=True)
         salMove = Move.objects.create(name="Salchow", abbreviation="Sal", changeFoot=True, initialLeftForC=False)
+        stepMove = Move.objects.create(name="Step", abbreviation="step", changeFoot=True, initialLeftForC=None)
 
         foEdge = Edge.objects.create(name="Forward Outside", abbreviation="FO")
+        self.foEdge = foEdge
         fiEdge = Edge.objects.create(name="Forward Inside", abbreviation="FI")
         biEdge = Edge.objects.create(name="Back Inside", abbreviation="BI")
         boEdge = Edge.objects.create(name="Back Outside", abbreviation="BO")
@@ -17,6 +19,7 @@ class GeneratorTestCase(TestCase):
         self.tlTransition = Transition.objects.create(move=tlMove, entry=boEdge, exit=boEdge)
         self.boTurnTransition = Transition.objects.create(move=move, entry=boEdge, exit=fiEdge)
         self.salTransition = Transition.objects.create(move=salMove, entry=biEdge, exit=boEdge)
+        self.stepTransition = Transition.objects.create(move=stepMove, entry=fiEdge, exit=foEdge)
 
 
     def testNextClockwiseIfInitialLeft(self):
@@ -93,4 +96,15 @@ class GeneratorTestCase(TestCase):
         self.assertEquals(result[2].entry.foot, 'L')
         self.assertEquals(result[2].exit.abbreviation, 'BO')
         self.assertEquals(result[2].exit.foot, 'L')
+
+    def testFindMatchingTransitionIdxs(self):
+        transitions = [self.transition, self.salTransition, self.tlTransition, self.boTurnTransition, self.stepTransition, self.transition]
+        # RFO -> RBI -> LBO -> LBO -> LFI -> RFO -> RBI
+        transitionsWithFoot = Generator().transitionsWithFoot(transitions, 'R')
+        edge = EdgeWithFoot(self.foEdge, 'R')
+
+        matchingIdxs = Generator().findMatchingTransitionIdxs(transitionsWithFoot, edge)
+        self.assertEquals(len(matchingIdxs), 2)
+        self.assertEquals(matchingIdxs[0], 0)
+        self.assertEquals(matchingIdxs[1], 5)
 
