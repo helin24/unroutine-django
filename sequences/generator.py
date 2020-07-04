@@ -115,6 +115,10 @@ class Generator:
         randomEndIdx = min(randomStartIdx + random.randint(4, 8), len(secondTransitionsWithFoot))
 
         transitionsWithFoot.extend(secondTransitionsWithFoot[randomStartIdx:randomEndIdx])
+        self.debugPrint(transitionsWithFoot)
+        # introduce mutations
+        transitionsWithFoot = self.maybeMutate(transitionsWithFoot)
+        self.debugPrint(transitionsWithFoot)
 
         canonicalTransitions = []
         hasJumps = False
@@ -125,8 +129,6 @@ class Generator:
             elif t.move.category == 'S':
                 hasSpins = True
             canonicalTransitions.append(transitionMap(t))
-
-        ## TODO: Introduce mutations
 
         sequence = Sequence(
             transitionsCount=len(canonicalTransitions),
@@ -140,6 +142,25 @@ class Generator:
         sequence.save()
 
         return {'transitions': transitionsWithFoot, 'startEdge': transitionsWithFoot[0].entry, 'steps': len(transitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
+
+    def debugPrint(self, transitionsWithFoot):
+        for t in transitionsWithFoot:
+            print('%s -> %s -> %s' % (t.entry, t.move.name, t.exit))
+        print('')
+
+    def maybeMutate(self, transitionsWithFoot):
+        # based on length, give probability for each element? Or just select one element and mutate?
+        mutateIdx = random.randint(0, len(transitionsWithFoot) - 1)
+        mutateTransition = transitionsWithFoot[mutateIdx]
+        newTransition = Transition.objects.filter(
+            entry__abbreviation=mutateTransition.entry.abbreviation,
+            exit__abbreviation=mutateTransition.exit.abbreviation,
+            move__changeFoot=mutateTransition.move.changeFoot,
+            move__initialLeftForC=mutateTransition.move.initialLeftForC
+        ).order_by('?').first()
+
+        transitionsWithFoot[mutateIdx] = TransitionWithFoot(newTransition, mutateTransition.entry.foot, mutateTransition.exit.foot)
+        return transitionsWithFoot
 
     def findMatchingTransitionIdxs(self, transitions, edge):
         def matches(idx):
