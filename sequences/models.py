@@ -63,7 +63,6 @@ class Transition(models.Model):
     move = models.ForeignKey(Move, on_delete=models.CASCADE)
     entry = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='entry')
     exit = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='exit')
-    rotationDirection = models.CharField(max_length=3, choices=DIRECTION_CHOICES, null=True, blank=True)
 
     def __str__(self):
         return self.entry.abbreviation + ' -> ' + self.move.abbreviation + ' -> ' + self.exit.abbreviation
@@ -73,7 +72,6 @@ class Transition(models.Model):
             'move': self.move.toObject(),
             'entry': self.entry.toObject(),
             'exit': self.exit.toObject(),
-            'rotationDirection': self.rotationDirection,
         }
 
 class TransitionWithFoot():
