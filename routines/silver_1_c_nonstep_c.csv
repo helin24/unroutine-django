@@ -11,7 +11,8 @@ RFO,Step,LFI
 LFI,Step,RFO
 RFO,Step,LFI
 LFI,Bracket,LBO
-LBO,Step,RBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
 RBO,Three Turn,RFI
 RFI,Step,LFI
 LFI,Mohawk,RBI

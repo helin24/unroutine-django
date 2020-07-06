@@ -57,7 +57,8 @@ RBO,Three Turn,RFI
 RFI,Mohawk,LBI
 LBI,Cross Step,RBI
 RBI,Step,LBO
-LBO,Step,RBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
 RBO,Step,LFO
 LFO,Axel,RBO
 RBO,Stag Jump,LFI

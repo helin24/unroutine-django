@@ -39,7 +39,8 @@ LFI,Mohawk,RBI
 RBI,Cross Step,LBO
 LBO,Lutz,RBO
 RBO,Push,RBO
-RBO,Step,LBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
 LBO,Crossover,LBO
 LBO,Weight Change,LBI
 LBI,Step,RBO

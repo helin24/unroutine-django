@@ -13,6 +13,7 @@ class Move(models.Model):
     initialLeftForC = models.BooleanField(null=True)
     # True if the move ends on the other foot.
     changeFoot = models.BooleanField(null=True)
+    frequency = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

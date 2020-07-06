@@ -13,7 +13,8 @@ RFO,Three Turn,RBI
 RBI,Cross Step,LBI
 LBI,Step,RBO
 RBO,Full Twizzle,RBO
-RBO,Step,LBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
 LBO,Step,RFI
 RFI,Mohawk,LBI
 LBI,Cross Step,RBI
@@ -24,5 +25,6 @@ LBI,Three Turn,LFO
 LFO,Three Turn,LBI
 LBI,Cross Step,RBI
 RBI,Step,LBO
-LBO,Step,RBO
+LBO,Weight Change,LBI
+LBI,Step,RBO
 RBO,Spiral,RBO

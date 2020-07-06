@@ -25,7 +25,8 @@ RBO,Side Toe Hop,LFO
 LFO,Step,RFI
 RFI,Full Twizzle,RFI
 RFI,Half Twizzle,RBO
-RBO,Step,LBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
 LBO,Crossover,LBO
 LBO,Weight Change,LBI
 LBI,Step,RBO
