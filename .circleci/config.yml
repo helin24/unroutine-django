@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers
+        environment:
+          DATABASE_URL: postgresql://root@localhost/circle_test
+      - image: circleci/postgres:9.6.5-alpine-ram
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: ./manage.py test
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
