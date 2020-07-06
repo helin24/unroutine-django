@@ -201,12 +201,13 @@ class Generator:
         return transitionsWithFoot
 
     def chooseStartingFoot(self, clockwiseIfInitialLeft, cw):
-        if clockwiseIfInitialLeft is None:
-            return 'L'
-        elif clockwiseIfInitialLeft == cw:
-            return 'L'
-        else:
-            return 'R'
+        return 'L'
+#        if clockwiseIfInitialLeft is None:
+#            return 'L'
+#        elif clockwiseIfInitialLeft == cw:
+#            return 'L'
+#        else:
+#            return 'R'
 
     def nextClockwiseIfInitialLeft(self, onInitialFoot, clockwiseIfInitialLeft, transition):
         # if we've already switched feet, then current move initialLeftForC should be reversed
