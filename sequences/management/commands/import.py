@@ -77,6 +77,8 @@ class Command(BaseCommand):
             name = sequenceNameFromRoutineFeatures(level, number, letter)
             sequence = Sequence.objects.filter(name=name).first()
             print(CSV_TO_LEVEL_MAP[level])
+
+            # TODO: If there is already a sequence, deduct counts from frequencies
             if sequence is None:
                 sequence = Sequence(
                     name=name,
@@ -90,6 +92,8 @@ class Command(BaseCommand):
                 )
             sequence.transitionsJson = json.dumps({'transitions': transitions})
             sequence.save()
+
+            # TODO: Add new counts to frequencies
 
     def saveNewMove(self, moveName, entryName, exitName):
         print('Not Found: ' + moveName)
