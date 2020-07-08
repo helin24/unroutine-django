@@ -4,9 +4,7 @@ RBO,Step,LFO
 LFO,Step,RFI
 RFI,Step,LFI
 LFI,Spread Eagle,LFI
-LFI,Three Turn,LBO
-LBO,Step,RBO
-RBO,Weight Change,RBI
+LFI,Mohawk,RBI
 RBI,Step,LBO
 LBO,Weight Change,LBI
 LBI,Step,RBI

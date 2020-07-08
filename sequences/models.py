@@ -13,6 +13,13 @@ class Move(models.Model):
     initialLeftForC = models.BooleanField(null=True)
     # True if the move ends on the other foot.
     changeFoot = models.BooleanField(null=True)
+    frequency = models.IntegerField(default=0)
+    frequency_adult_bronze_step = models.IntegerField(default=0)
+    frequency_adult_bronze_nonstep = models.IntegerField(default=0)
+    frequency_adult_silver_step = models.IntegerField(default=0)
+    frequency_adult_silver_nonstep = models.IntegerField(default=0)
+    frequency_adult_gold_step = models.IntegerField(default=0)
+    frequency_adult_gold_nonstep = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -63,7 +70,6 @@ class Transition(models.Model):
     move = models.ForeignKey(Move, on_delete=models.CASCADE)
     entry = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='entry')
     exit = models.ForeignKey(Edge, on_delete=models.CASCADE, related_name='exit')
-    rotationDirection = models.CharField(max_length=3, choices=DIRECTION_CHOICES, null=True, blank=True)
 
     def __str__(self):
         return self.entry.abbreviation + ' -> ' + self.move.abbreviation + ' -> ' + self.exit.abbreviation
@@ -73,7 +79,6 @@ class Transition(models.Model):
             'move': self.move.toObject(),
             'entry': self.entry.toObject(),
             'exit': self.exit.toObject(),
-            'rotationDirection': self.rotationDirection,
         }
 
 class TransitionWithFoot():

@@ -28,5 +28,5 @@ LBI,Rocker,LFI
 LFI,Counter,LBI
 LBI,Step,RFO
 RFO,Attitude,RFO
-RFO,Step,LBO
+RFO,Waltz Hop,LBO
 LBO,Toe Tap Around (2-step),LBO

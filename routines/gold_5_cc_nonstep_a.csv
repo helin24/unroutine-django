@@ -1,8 +1,8 @@
 Entry,Move,Exit
 LFO,Step,RFI
 RFI,Step,LFI
-LFI,Step,RBO
-RBO,Mohawk,LBO
+LFI,Step,RFO
+RFO,Mohawk,LBO
 LBO,Cross Step,RBI
 RBI,Step,LBI
 LBI,Figure Loop,LBI

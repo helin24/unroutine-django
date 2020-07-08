@@ -2,7 +2,7 @@ Entry,Move,Exit
 RBI,Step,LBO
 LBO,Crossover,LBO
 LBO,Crossover,LBO
-LBO,Step,LBO
+LBO,Push,LBO
 LBO,Cross Step,RBI
 RBI,Step,RFO
 RFO,Three Turn,RBI

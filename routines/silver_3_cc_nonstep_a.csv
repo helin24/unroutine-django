@@ -71,8 +71,8 @@ RBO,Step,LFO
 LFO,Crossover,LFO
 LFO,Step,RFI
 RFI,Three Turn,RBO
-RBO,Step,LBO
-LBO,Cross Step,RBI
+RBO,Step,LBI
+LBI,Cross Step,RBI
 RBI,Push,RBO
 RBO,Step,LFO
 LFO,Three Turn,LBI

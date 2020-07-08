@@ -4,7 +4,8 @@ LBO,Step,RFI
 RFI,Three Turn,RBO
 RBO,Cross Step,LBI
 LBI,Step,RBO
-RBO,Step,LBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
 LBO,Pivot,LBO
 LBO,Snowplow Stop,RBO
 RBO,Step,LFO

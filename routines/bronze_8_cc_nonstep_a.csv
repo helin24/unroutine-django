@@ -20,7 +20,8 @@ RBI,Step,LBI
 LBI,Step,RBO
 RBO,Step,LFO
 LFO,Waltz Jump,RBO
-RBO,Step,LBO
+RBO,Weight Change,RBI
+RBI,Step,LBO
 LBO,Cross Step,RBI
 RBI,Step,LFO
 LFO,Forward Upright Spin,RBO

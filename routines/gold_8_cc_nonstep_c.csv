@@ -3,8 +3,8 @@ LBI,Crossover,LBO
 LBO,Crossover,LBO
 LBO,Crossover,LBO
 LBO,Crossover,LBO
-LBO,Step,RBO
-RBO,Step,LFO
+LBO,Step,RBI
+RBI,Step,LFO
 LFO,Step,RFI
 RFI,Step,LFO
 LFO,Cross Step,RFI

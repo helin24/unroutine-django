@@ -1,7 +1,7 @@
 Entry,Move,Exit
 RFO,Toe Tap Around (3-step),LBO
 LBO,Cross Roll,RBO
-RBO,Step,LBO
+RBO,Cross Roll,LBO
 LBO,Weight Change,LBI
 LBI,Three Turn,LFO
 LFO,Three Turn,LBI

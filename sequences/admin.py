@@ -7,7 +7,7 @@ class EdgeAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbreviation')
 
 class MoveAdmin(admin.ModelAdmin):
-    list_display = ('name', 'abbreviation', 'category', 'changeFoot', 'initialLeftForC')
+    list_display = ('name', 'abbreviation', 'category', 'changeFoot', 'initialLeftForC', 'frequency', 'frequency_adult_gold_step', 'frequency_adult_gold_nonstep', 'frequency_adult_silver_step', 'frequency_adult_silver_nonstep', 'frequency_adult_bronze_step', 'frequency_adult_bronze_nonstep')
 
 class TransitionAdmin(admin.ModelAdmin):
     list_display = ('move', 'entry', 'exit')
