@@ -1,7 +1,9 @@
 import json
 import random
-from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence
+from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence, Move
+from django.db.models import Sum
 from sequences.utils import transitionMap
+from .constants import LevelAbbreviation
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -86,44 +88,26 @@ class Generator:
 
     def makeFromGenetic(self, cw, stepSequence, level):
         # find sequences that are this level and step sequence
-        randomQuery = Sequence.objects.filter(isStep=stepSequence, level=level, name__isnull=False).order_by('?')
-        first = randomQuery.first()
-        second = randomQuery.exclude(pk=first.id).first()
-        if second is None:
-            return {'error': 'Not enough routines to generate'}
+        transitionsWithFoot = map(lambda s: self.transitionsWithFootFromSequence(s, cw), Sequence.objects.filter(isStep=stepSequence, level=level, name__isnull=False).iterator())
 
-        # Assign foot for each transition
-        transitionsWithFoot = self.transitionsWithFootFromSequence(first, cw)
-        secondTransitionsWithFoot = self.transitionsWithFootFromSequence(second, cw)
+        moveFrequencies = self.getMoveFrequencies(stepSequence, level)
 
-        # join somewhere in there
-        randomLength = random.randint(4, 8)
-        if len(transitionsWithFoot) < randomLength:
-            start = 0
-            end = len(transitionsWithFoot)
-        else:
-            start = random.randint(0, len(transitionsWithFoot) - randomLength)
-            end = start + randomLength
-        transitionsWithFoot = transitionsWithFoot[start:end]
+        sequencesWithChiSquare = []
+        maxChiSquare = 0
+        totalChiSquare = 0
+        # get chi square values
+        for sequence in transitionsWithFoot:
+            chiSquare = self.getChiSquare(sequence, moveFrequencies)
+            totalChiSquare += chiSquare
+            maxChiSquare = max(chiSquare, maxChiSquare)
+            sequencesWithChiSquare.append((sequence, chiSquare))
 
-        endEdge = transitionsWithFoot[-1].exit
-
-        potentialStarts = self.findMatchingTransitionIdxs(secondTransitionsWithFoot, endEdge)
-        if not potentialStarts:
-            return {'error': 'No matching transition found to join %s and %s with %s' % (first.id, second.id, endEdge)}
-        randomStartIdx = random.choice(potentialStarts)
-        randomEndIdx = min(randomStartIdx + random.randint(4, 8), len(secondTransitionsWithFoot))
-
-        transitionsWithFoot.extend(secondTransitionsWithFoot[randomStartIdx:randomEndIdx])
-        self.debugPrint(transitionsWithFoot)
-        # introduce mutations
-        transitionsWithFoot = self.maybeMutate(transitionsWithFoot)
-        self.debugPrint(transitionsWithFoot)
+        resultingTransitionsWithFoot = self.runAlgorithm(sequencesWithChiSquare, (maxChiSquare + totalChiSquare / len(sequencesWithChiSquare)) / 2, moveFrequencies)
 
         canonicalTransitions = []
         hasJumps = False
         hasSpins = False
-        for t in transitionsWithFoot:
+        for t in resultingTransitionsWithFoot:
             if t.move.category == 'J':
                 hasJumps = True
             elif t.move.category == 'S':
@@ -137,11 +121,100 @@ class Generator:
             isStep = stepSequence,
             hasJumps=hasJumps,
             hasSpins=hasSpins,
-            initialLeftForC=first.initialLeftForC
+            initialLeftForC=((resultingTransitionsWithFoot[0].entry.foot == 'L') == cw)
         )
         sequence.save()
 
-        return {'transitions': transitionsWithFoot, 'startEdge': transitionsWithFoot[0].entry, 'steps': len(transitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
+        return {'transitions': resultingTransitionsWithFoot, 'startEdge': resultingTransitionsWithFoot[0].entry, 'steps': len(resultingTransitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
+
+    def getChiSquare(self, sequence, moveFrequencies):
+        # sequence is list of transitionsWithFoot
+        sumSquares = 0.0
+
+        sequenceMap = {}
+        for t in sequence:
+            if t.move.abbreviation not in sequenceMap:
+                sequenceMap[t.move.abbreviation] = 0
+            sequenceMap[t.move.abbreviation] += 1
+
+        for moveAbbr, frequency in moveFrequencies.items():
+            if frequency > 0:
+                sumSquares += ((frequency * len(sequence) - sequenceMap.get(moveAbbr, 0) * 1.0) ** 2 / (frequency * len(sequence)))
+
+        return sumSquares
+
+
+    def getMoveFrequencies(self, stepSequence, level):
+        label = None
+        stepWord = 'step' if stepSequence else 'nonstep'
+        if level == LevelAbbreviation.ADULT_BRONZE.value:
+            label = f'frequency_adult_bronze_{stepWord}'
+        elif level == LevelAbbreviation.ADULT_SILVER.value:
+            label = f'frequency_adult_silver_{stepWord}'
+        elif level == LevelAbbreviation.ADULT_GOLD.value:
+            label = f'frequency_adult_gold_{stepWord}'
+
+        if label is None:
+            raise Exception(f'Level {level} could not be found')
+
+        totalMoves = Move.objects.aggregate(Sum(label))[f'{label}__sum']
+
+        moveFrequencies = {}
+        for move in Move.objects.all().iterator():
+            moveFrequencies[move.abbreviation] = getattr(move, label) * 1.0 / totalMoves
+
+        return moveFrequencies
+
+
+    def runAlgorithm(self, sequencesPopulation, chiSquareTarget, moveFrequencies):
+        if len(sequencesPopulation) < 3:
+            raise Exception('The population is not large enough')
+
+        generated = []
+        attempts = 0
+        while attempts < 5:
+            attempts += 1
+            # select two sequences randomly from transitions as tournament (select 3 first and drop worst one)
+            threeSequences = sorted(random.sample(sequencesPopulation, 3), key=lambda s: s[1])
+
+            first = threeSequences[0][0]
+            second = threeSequences[1][0]
+
+            # combine the two
+            randomLength = random.randint(4, 8)
+            if len(first) < randomLength:
+                start = 0
+                end = len(first)
+            else:
+                start = random.randint(0, len(first) - randomLength)
+                end = start + randomLength
+            first = first[start:end]
+
+            endEdge = first[-1].exit
+
+            potentialStarts = self.findMatchingTransitionIdxs(second, endEdge)
+            if not potentialStarts:
+                continue
+            randomStartIdx = random.choice(potentialStarts)
+            randomEndIdx = min(randomStartIdx + random.randint(4, 8), len(second))
+
+            first.extend(second[randomStartIdx:randomEndIdx])
+
+            first = self.maybeMutate(first)
+            self.debugPrint(first)
+
+            # calculate chi square - probably also need to pass in map
+            chiSquare = self.getChiSquare(first, moveFrequencies)
+            print(chiSquare)
+            # if chi square is below target, return sequence
+            if chiSquare < chiSquareTarget:
+                return first
+
+            # otherwise add to population?
+            sequencesPopulation.append((first, chiSquare))
+            generated.append((first, chiSquare))
+        
+        return sorted(generated, key=lambda s: s[1])[0]
 
     def debugPrint(self, transitionsWithFoot):
         for t in transitionsWithFoot:
