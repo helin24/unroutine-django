@@ -23,24 +23,44 @@ class Command(BaseCommand):
         print(bronze_step_map)
 
         for sequence in Sequence.objects.filter(name__startswith='bronze', isStep=True).iterator():
-            transitions = Generator().transitionsWithFootFromSequence(sequence, True)
-
-            sequence_map = {}
-
-            for t in transitions:
-                if t.move.abbreviation not in sequence_map:
-                    sequence_map[t.move.abbreviation] = 0
-                sequence_map[t.move.abbreviation] += 1
+            transitions = Generator().transitionsWithFootFromSequence(sequence, True)[:10]
+            sequenceMap = self.getSequenceMap(transitions)
 
             sumSquares = 0.0
             for moveAbbr, frequency in bronze_step_map.items():
                 if frequency > 0:
-                    sumSquares += ((frequency * len(transitions) - sequence_map.get(moveAbbr, 0) * 1.0) ** 2 / (frequency * len(transitions)))
+                    sumSquares += ((frequency * len(transitions) - sequenceMap.get(moveAbbr, 0) * 1.0) ** 2 / (frequency * len(transitions)))
 
-            print('Name: %s, length %d: %d' % (sequence.name, len(transitions), sumSquares))
+            print(f'Name: {sequence.name}, length {len(transitions)}: {sumSquares:.3f}')
 
 
             # every 5 moves
             # every 10 moves
             # total sequence
+
+
+        for _ in range(0, 10):
+            transitions = Generator().makeRandom(None, 10, True)['transitions']
+            sequenceMap = self.getSequenceMap(transitions)
+
+            sumSquares = 0.0
+            for moveAbbr, frequency in bronze_step_map.items():
+                if frequency > 0:
+                    sumSquares += ((frequency * len(transitions) - sequenceMap.get(moveAbbr, 0) * 1.0) ** 2 / (frequency * len(transitions)))
+
+            print(f'Random sequence {_}: {sumSquares:.3f}')
+            for t in transitions:
+                print(f'{t.entry.foot}{t.entry.abbreviation} -> {t.move.abbreviation} -> {t.exit.foot}{t.exit.abbreviation}')
+
+
+
+    def getSequenceMap(self, transitions):
+        sequenceMap = {}
+
+        for t in transitions:
+            if t.move.abbreviation not in sequenceMap:
+                sequenceMap[t.move.abbreviation] = 0
+            sequenceMap[t.move.abbreviation] += 1
+        return sequenceMap
+
 
