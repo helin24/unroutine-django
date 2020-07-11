@@ -8,10 +8,6 @@ from .generator import Generator
 from .rating import updateRating
 from .constants import LEVEL_CHOICES
 
-REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
-MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
-BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
-
 def index(request):
     steps = 5
     cw = False
