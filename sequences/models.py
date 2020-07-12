@@ -105,4 +105,5 @@ class Sequence(models.Model):
     hasSpins = models.BooleanField()
     initialLeftForC = models.BooleanField(null=True)
     name = models.CharField(max_length=50, null=True, blank=True)
+    audioFilesJson = models.TextField(default='{"files": []}')
 

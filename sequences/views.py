@@ -6,11 +6,7 @@ from django.core import serializers
 from .models import Edge, Transition
 from .generator import Generator
 from .rating import updateRating
-from .constants import LEVEL_CHOICES
-
-REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
-MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
-BACKSPINS = set(['BScSpin', 'BSitSpin', 'BCaSpin'])
+from .constants import LEVEL_CHOICES, LevelAbbreviation
 
 def index(request):
     steps = 5
@@ -20,8 +16,6 @@ def index(request):
         if 'clockwise' in request.POST:
             cw = request.POST['clockwise'] == 'on'
     template = loader.get_template('sequences/index.html')
-    # This is if we want to generate from database
-    # result = Generator().makeFromDatabase(cw)
     result = Generator().makeRandom(request, steps, cw)
 
     return HttpResponse(template.render(result, request))
@@ -29,11 +23,20 @@ def index(request):
 def json(request):
     steps = 5
     cw = False
+    stepSequence = True
+    level = LevelAbbreviation.ADULT_BRONZE.value
+    minId = 0
     if request.GET:
         steps = min(20, int(request.GET['steps']))
         if 'clockwise' in request.GET:
             cw = request.GET['clockwise'] == 'on'
-    context = Generator().makeRandom(request, steps, cw)
+        if 'stepSequence' in request.GET:
+            stepSequence = request.GET['stepSequence'] == 'on'
+        if 'level' in request.GET:
+            level = request.GET['level']
+        if 'minId' in request.GET:
+            minId = int(request.GET['minId'])
+    context = Generator().makeFromDatabase(steps, cw, stepSequence, level, minId)
     context['transitions'] = list(map(lambda t: t.toObject(), context['transitions']))
     context['startEdge'] = context['startEdge'].toObject()
     return JsonResponse(context, safe=False)
