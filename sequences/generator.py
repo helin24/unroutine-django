@@ -4,6 +4,7 @@ from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence
 from django.db.models import Sum
 from sequences.utils import transitionMap
 from .constants import LevelAbbreviation
+from sequences.audio_manager import AudioManager
 
 REPEATABLE = set(['TL', 'Loop', 'Bunny Hop'])
 MOVES_BEFORE_BACKSPIN = set(['FScSpin', 'FSitSpin', 'FCaSpin', 'FLbSpin', '3Turn'])
@@ -69,10 +70,22 @@ class Generator:
 
         return {'transitions': transitions, 'startEdge': startEdge, 'steps': steps, 'clockwise': cw}
 
-    def makeFromDatabase(self, cw):
-        sequence = Sequence.objects.first()
+    def makeFromDatabase(self, steps, cw, stepSequence, level, minId):
+        sequence = Sequence.objects.filter(transitionsCount__gte=steps, isStep=stepSequence, level=level, id__gte=minId).first()
+        if sequence is None:
+            # Generate sequence
+            sequence = self.makeNewGenetic(steps, cw, stepSequence, level)
         decoded = json.loads(sequence.transitionsJson)
         objects = decoded['transitions']
+
+        if steps < len(objects):
+            randStart = random.randint(0, len(objects) - steps)
+            end = randStart + steps
+        else:
+            randStart = 0
+            end = len(objcts)
+
+        objects = objects[randStart:end]
         transitions = []
         for t in objects:
             transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
@@ -82,11 +95,15 @@ class Generator:
 
         startFoot = self.chooseStartingFoot(sequence.initialLeftForC, cw)
         transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
+
+        # look for audio
+        audioUrl = AudioManager().getSequenceUrl(sequence, transitionsWithFoot, cw, randStart, end - 1)
+
         startEdge = transitionsWithFoot[0].entry
 
-        return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id}
+        return {'transitions': transitionsWithFoot, 'startEdge': startEdge, 'steps': len(transitions), 'clockwise': cw, 'id': sequence.id, 'audio': audioUrl}
 
-    def makeFromGenetic(self, cw, stepSequence, level):
+    def makeNewGenetic(self, steps, cw, stepSequence, level):
         # find sequences that are this level and step sequence
         transitionsWithFoot = map(lambda s: self.transitionsWithFootFromSequence(s, cw), Sequence.objects.filter(isStep=stepSequence, level=level, name__isnull=False).iterator())
 
@@ -125,7 +142,12 @@ class Generator:
         )
         sequence.save()
 
-        return {'transitions': resultingTransitionsWithFoot, 'startEdge': resultingTransitionsWithFoot[0].entry, 'steps': len(resultingTransitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
+        return sequence
+
+    def makeFromGenetic(self, cw, stepSequence, level):
+        sequence = self.makeNewGenetic(10, cw, stepSequence, level)
+        transitionsWithFoot = self.transitionsWithFootFromSequence(sequence, cw)
+        return {'transitions': transitionsWithFoot, 'startEdge': transitionsWithFoot[0].entry, 'steps': len(transitionsWithFoot), 'clockwise': cw, 'id': sequence.id}
 
     def getChiSquare(self, sequence, moveFrequencies):
         # sequence is list of transitionsWithFoot
