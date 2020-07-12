@@ -10,8 +10,8 @@ BUCKET_ROOT = 'https://unroutine-sequences.s3-us-west-2.amazonaws.com'
 class AudioManager:
     def __init__(self):
         session = Session(aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'], aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'])
-        self.polly = session.client('polly')
-        self.s3 = session.client('s3')
+        self.polly = session.client('polly', region_name='us-west-2')
+        self.s3 = session.client('s3', region_name='us-west-2')
 
     def getSequenceUrl(self, sequence, transitionsWithFoot, cw, startIdx, endIdx):
         # Check the sequence
