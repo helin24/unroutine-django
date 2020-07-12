@@ -14,12 +14,12 @@ class Move(models.Model):
     # True if the move ends on the other foot.
     changeFoot = models.BooleanField(null=True)
     frequency = models.IntegerField(default=0)
-    frequency_adult_bronze_step = models.IntegerField(default=0)
-    frequency_adult_bronze_nonstep = models.IntegerField(default=0)
-    frequency_adult_silver_step = models.IntegerField(default=0)
-    frequency_adult_silver_nonstep = models.IntegerField(default=0)
-    frequency_adult_gold_step = models.IntegerField(default=0)
-    frequency_adult_gold_nonstep = models.IntegerField(default=0)
+#    frequency_adult_bronze_step = models.IntegerField(default=0)
+#    frequency_adult_bronze_nonstep = models.IntegerField(default=0)
+#    frequency_adult_silver_step = models.IntegerField(default=0)
+#    frequency_adult_silver_nonstep = models.IntegerField(default=0)
+#    frequency_adult_gold_step = models.IntegerField(default=0)
+#    frequency_adult_gold_nonstep = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
