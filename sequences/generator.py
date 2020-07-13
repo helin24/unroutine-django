@@ -78,14 +78,6 @@ class Generator:
         decoded = json.loads(sequence.transitionsJson)
         objects = decoded['transitions']
 
-        if steps < len(objects):
-            randStart = random.randint(0, len(objects) - steps)
-            end = randStart + steps
-        else:
-            randStart = 0
-            end = len(objcts)
-
-        objects = objects[randStart:end]
         transitions = []
         for t in objects:
             transition = Transition.objects.filter(move__abbreviation=t['move']).filter(entry__abbreviation=t['entry']).filter(exit__abbreviation=t['exit']).first()
@@ -95,6 +87,15 @@ class Generator:
 
         startFoot = self.chooseStartingFoot(sequence.initialLeftForC, cw)
         transitionsWithFoot = self.transitionsWithFoot(transitions, startFoot)
+
+        if steps < len(objects):
+            randStart = random.randint(0, len(objects) - steps)
+            end = randStart + steps
+        else:
+            randStart = 0
+            end = len(objcts)
+
+        transitionsWithFoot = transitionsWithFoot[randStart:end]
 
         # look for audio
         audioUrl = AudioManager().getSequenceUrl(sequence, transitionsWithFoot, cw, randStart, end - 1)

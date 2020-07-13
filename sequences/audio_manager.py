@@ -48,7 +48,7 @@ class AudioManager:
         return f'{BUCKET_ROOT}/{audioFileName}.mp3'
 
     def textFromTransition(self, transition):
-        foot = 'Left' if transition.entry.foot == 'L' else 'Right'
+        foot = 'Left' if transition.exit.foot == 'L' else 'Right'
         return f'{transition.move.name} to {foot} {transition.exit.name}'
 
     def createPollyFile(self, transitionsWithFoot, audioFileName):
