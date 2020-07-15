@@ -25,77 +25,77 @@ class GeneratorTestCase(TestCase):
     def testNextClockwiseIfInitialLeft(self):
         # Start - on initial foot, no directional moves yet + non-directional transition
         start = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=None, transition=self.transition)
-        self.assertEquals(start, None)
+        self.assertEqual(start, None)
 
         # On initial foot, no directional moves yet + directional transition
         tl = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=None, transition=self.tlTransition)
-        self.assertEquals(tl, True)
+        self.assertEqual(tl, True)
 
         sal = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=None, transition=self.salTransition)
-        self.assertEquals(sal, False)
+        self.assertEqual(sal, False)
 
 
         # Start - not on initial foot, no directional moves yet + non-directional transition
         start = Generator().nextClockwiseIfInitialLeft(onInitialFoot=False, clockwiseIfInitialLeft=None, transition=self.transition)
-        self.assertEquals(start, None)
+        self.assertEqual(start, None)
 
         # Not on initial foot, no directional moves yet + directional transition
         tl = Generator().nextClockwiseIfInitialLeft(onInitialFoot=False, clockwiseIfInitialLeft=None, transition=self.tlTransition)
-        self.assertEquals(tl, False)
+        self.assertEqual(tl, False)
 
         sal = Generator().nextClockwiseIfInitialLeft(onInitialFoot=False, clockwiseIfInitialLeft=None, transition=self.salTransition)
-        self.assertEquals(sal, True)
+        self.assertEqual(sal, True)
 
 
         # On initial foot, True for clockwiseIfInitialLeft + non-directional transition
         boTurn = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=True, transition=self.boTurnTransition)
-        self.assertEquals(boTurn, True)
+        self.assertEqual(boTurn, True)
 
         # On initial foot, True for clockwiseIfInitialLeft + directional transition
         tl = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=True, transition=self.tlTransition)
-        self.assertEquals(tl, True)
+        self.assertEqual(tl, True)
 
         # TODO: Maybe this shouldn't happen?
         tl = Generator().nextClockwiseIfInitialLeft(onInitialFoot=True, clockwiseIfInitialLeft=True, transition=self.salTransition)
-        self.assertEquals(tl, True)
+        self.assertEqual(tl, True)
 
     def testInitialLeftForCToExclude(self):
-        self.assertEquals(Generator().initialLeftForCToExclude(True, None), None)
-        self.assertEquals(Generator().initialLeftForCToExclude(True, True), False)
-        self.assertEquals(Generator().initialLeftForCToExclude(True, False), True)
+        self.assertEqual(Generator().initialLeftForCToExclude(True, None), None)
+        self.assertEqual(Generator().initialLeftForCToExclude(True, True), False)
+        self.assertEqual(Generator().initialLeftForCToExclude(True, False), True)
 
-        self.assertEquals(Generator().initialLeftForCToExclude(False, None), None)
-        self.assertEquals(Generator().initialLeftForCToExclude(False, True), True)
-        self.assertEquals(Generator().initialLeftForCToExclude(False, False), False)
+        self.assertEqual(Generator().initialLeftForCToExclude(False, None), None)
+        self.assertEqual(Generator().initialLeftForCToExclude(False, True), True)
+        self.assertEqual(Generator().initialLeftForCToExclude(False, False), False)
 
     def testChooseStartingFoot(self):
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=True), 'L')
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=True), 'L')
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=True), 'R')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=True), 'L')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=True), 'L')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=True), 'R')
 
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=False), 'L')
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=False), 'R')
-        self.assertEquals(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=False), 'L')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=None, cw=False), 'L')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=True, cw=False), 'R')
+        self.assertEqual(Generator().chooseStartingFoot(clockwiseIfInitialLeft=False, cw=False), 'L')
 
     def testTransitionsWithFoot(self):
         transitions = [self.transition, self.salTransition, self.tlTransition]
 
         result = Generator().transitionsWithFoot(transitions, 'R')
 
-        self.assertEquals(result[0].entry.abbreviation, 'FO')
-        self.assertEquals(result[0].entry.foot, 'R')
-        self.assertEquals(result[0].exit.abbreviation, 'BI')
-        self.assertEquals(result[0].exit.foot, 'R')
+        self.assertEqual(result[0].entry.abbreviation, 'FO')
+        self.assertEqual(result[0].entry.foot, 'R')
+        self.assertEqual(result[0].exit.abbreviation, 'BI')
+        self.assertEqual(result[0].exit.foot, 'R')
 
-        self.assertEquals(result[1].entry.abbreviation, 'BI')
-        self.assertEquals(result[1].entry.foot, 'R')
-        self.assertEquals(result[1].exit.abbreviation, 'BO')
-        self.assertEquals(result[1].exit.foot, 'L')
+        self.assertEqual(result[1].entry.abbreviation, 'BI')
+        self.assertEqual(result[1].entry.foot, 'R')
+        self.assertEqual(result[1].exit.abbreviation, 'BO')
+        self.assertEqual(result[1].exit.foot, 'L')
 
-        self.assertEquals(result[2].entry.abbreviation, 'BO')
-        self.assertEquals(result[2].entry.foot, 'L')
-        self.assertEquals(result[2].exit.abbreviation, 'BO')
-        self.assertEquals(result[2].exit.foot, 'L')
+        self.assertEqual(result[2].entry.abbreviation, 'BO')
+        self.assertEqual(result[2].entry.foot, 'L')
+        self.assertEqual(result[2].exit.abbreviation, 'BO')
+        self.assertEqual(result[2].exit.foot, 'L')
 
     def testFindMatchingTransitionIdxs(self):
         transitions = [self.transition, self.salTransition, self.tlTransition, self.boTurnTransition, self.stepTransition, self.transition]
@@ -104,7 +104,7 @@ class GeneratorTestCase(TestCase):
         edge = EdgeWithFoot(self.foEdge, 'R')
 
         matchingIdxs = Generator().findMatchingTransitionIdxs(transitionsWithFoot, edge)
-        self.assertEquals(len(matchingIdxs), 2)
-        self.assertEquals(matchingIdxs[0], 0)
-        self.assertEquals(matchingIdxs[1], 5)
+        self.assertEqual(len(matchingIdxs), 2)
+        self.assertEqual(matchingIdxs[0], 0)
+        self.assertEqual(matchingIdxs[1], 5)
 
