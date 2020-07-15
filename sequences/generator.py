@@ -1,8 +1,8 @@
 import json
 import random
 from .models import Edge, Transition, EdgeWithFoot, TransitionWithFoot, Sequence, Move
-from django.db.models import Sum
-from sequences.utils import transitionMap
+from django.db.models import Sum, Q
+from sequences.utils import transitionMap, parentSequences
 from .constants import LevelAbbreviation
 from sequences.audio_manager import AudioManager
 
@@ -106,7 +106,7 @@ class Generator:
 
     def makeNewGenetic(self, steps, cw, stepSequence, level):
         # find sequences that are this level and step sequence
-        transitionsWithFoot = map(lambda s: self.transitionsWithFootFromSequence(s, cw), Sequence.objects.filter(isStep=stepSequence, level=level, name__isnull=False).iterator())
+        transitionsWithFoot = map(lambda s: self.transitionsWithFootFromSequence(s, cw), parentSequences(level, stepSequence))
 
         moveFrequencies = self.getMoveFrequencies(stepSequence, level)
 
