@@ -7,6 +7,8 @@ from .models import Edge, Transition
 from .generator import Generator
 from .rating import updateRating
 from .constants import LEVEL_CHOICES, LevelAbbreviation
+from django.views.decorators.csrf import csrf_exempt
+from decimal import Decimal
 
 def index(request):
     steps = 5
@@ -62,4 +64,11 @@ def rate(request):
 
     template = loader.get_template('sequences/rate.html')
     return HttpResponse(template.render({'rating': rating}, request))
+
+@csrf_exempt
+def rateSequence(request):
+    rating = Decimal(request.POST.get('rating'))
+    sequenceId = request.POST.get('sequenceId')
+    updateRating(sequenceId, rating)
+    return JsonResponse({'result': True}, safe=False)
 
