@@ -1,5 +1,6 @@
 from django.db.models import Q
-from .models import Sequence
+from sequences.models import Sequence
+from sequences.constants import RATINGS_COUNT_REQUIREMENT, RATINGS_AVERAGE_REQUIREMENT
 
 def sequenceNameFromRoutineFeatures(level, routineNumber, inRoutineLetter):
     return '%s_%s_%s' % (level, routineNumber, inRoutineLetter)
@@ -18,5 +19,5 @@ def parentSequences(level, stepSequence):
 
     returns: iterator of sequences fulfilling requirements to be parents for genetic algorithm
     """
-    return Sequence.objects.filter(Q(name__isnull=False) | Q(ratingsCount__gte=5, ratingsAverage__gte=3), isStep=stepSequence, level=level).iterator()
+    return Sequence.objects.filter(Q(name__isnull=False) | Q(ratingsCount__gte=RATINGS_COUNT_REQUIREMENT, ratingsAverage__gte=RATINGS_AVERAGE_REQUIREMENT), isStep=stepSequence, level=level).iterator()
 
