@@ -93,7 +93,7 @@ class Generator:
             end = randStart + steps
         else:
             randStart = 0
-            end = len(objcts)
+            end = len(objects)
 
         transitionsWithFoot = transitionsWithFoot[randStart:end]
 
